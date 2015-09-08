@@ -18,16 +18,6 @@ namespace Selenium
         static void Main()
         {
             AppDomain.CurrentDomain.ProcessExit += CurrentDomainOnProcessExit;
-            try
-            {
-                var host = new JobHost();
-                // The following code ensures that the WebJob will be running continuously
-                host.RunAndBlock();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Failed to connect to storage --- assuming development?");
-            }
 
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
                 "binaries\\selenium-server-standalone-2.47.1.jar");
@@ -75,6 +65,16 @@ namespace Selenium
 
             if (proc != null)
             {
+                try
+                {
+                    var host = new JobHost();
+                    // The following code ensures that the WebJob will be running continuously
+                    host.RunAndBlock();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Failed to connect to storage --- assuming development?");
+                }
                 proc.WaitForExit();
             }
             else
