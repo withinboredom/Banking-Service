@@ -69,7 +69,7 @@ namespace Selenium
                 {
                     var host = new JobHost();
                     // The following code ensures that the WebJob will be running continuously
-                    host.RunAndBlock();
+                    host.Start();
                 }
                 catch (Exception ex)
                 {
