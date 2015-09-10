@@ -8,6 +8,7 @@ namespace BankingService.Models
     /// <summary>
     /// A flow abstraction
     /// </summary>
+    
     public interface IFlow
     {
         /// <summary>

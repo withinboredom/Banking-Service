@@ -12,6 +12,13 @@ namespace BankingService.Controllers
 {
     public class InstitutionController : ApiController
     {
+        /// <summary>
+        /// Begins a login flow to a bank
+        /// </summary>
+        /// <param name="username">The username to signin with</param>
+        /// <param name="password">The password to signin with</param>
+        /// <param name="institution">The institution to signin to</param>
+        /// <returns>Flow state</returns>
         [method: HttpPost]
         public IFlow BeginLogin(string username, string password, Institutions institution)
         {
