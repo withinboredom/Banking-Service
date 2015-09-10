@@ -87,7 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Models\Banks\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="WebActivatorEx">
@@ -119,10 +119,15 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\InstitutionController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Flow.cs" />
+    <Compile Include="Models\IBank.cs" />
+    <Compile Include="Models\IFlow.cs" />
+    <Compile Include="Models\IStep.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
