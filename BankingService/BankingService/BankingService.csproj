@@ -123,6 +123,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Banks\Institutions.cs" />
+    <Compile Include="Models\Banks\Usaa.cs" />
+    <Compile Include="Models\BasicStep.cs" />
     <Compile Include="Models\Flow.cs" />
     <Compile Include="Models\IBank.cs" />
     <Compile Include="Models\IFlow.cs" />

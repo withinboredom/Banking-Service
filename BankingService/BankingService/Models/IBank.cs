@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Web;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace BankingService.Models
 {
     /// <summary>
     /// A enumeration of possible states for a given step
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum LoginStepStatus
     {
         Unkown,
@@ -51,13 +54,33 @@ namespace BankingService.Models
             actualValue = value;
             this.currency = currency;
         }
+
+        public Money(Money mon)
+        {
+            this.currency = mon.currency;
+            this.actualValue = mon.iValue;
+        }
     }
 
     public struct BalanceObject
     {
-        Money currentBalance { get; }
-        Money availableBalance { get; }
-        string accountNumber { get; }
+        public Money currentBalance { get; }
+        public Money availableBalance { get; }
+        public string accountNumber { get; }
+
+        public BalanceObject(Money currentBal, Money availMoney, string acct)
+        {
+            this.currentBalance = currentBal;
+            this.availableBalance = availMoney;
+            this.accountNumber = acct;
+        }
+
+        public BalanceObject(BalanceObject bal)
+        {
+            this.accountNumber = bal.accountNumber;
+            this.availableBalance = bal.availableBalance;
+            this.currentBalance = bal.currentBalance;
+        }
     }
 
     /// <summary>
