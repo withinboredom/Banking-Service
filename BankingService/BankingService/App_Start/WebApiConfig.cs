@@ -16,7 +16,7 @@ namespace BankingService
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "bank/{controller}/{id}",
+                routeTemplate: "{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }
