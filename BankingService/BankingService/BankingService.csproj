@@ -138,6 +138,7 @@
   <ItemGroup>
     <Content Include="apiapp.json" />
     <Content Include="Properties\webjobs-list.json" />
+    <None Include="Properties\PublishProfiles\BankingService%28blog%29.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
