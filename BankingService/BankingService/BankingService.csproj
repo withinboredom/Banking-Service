@@ -127,12 +127,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Banks\BankDriver.cs" />
-    <Compile Include="Models\Banks\USAA.cs" />
-    <Compile Include="Models\DataConstructs\BankInformation.cs" />
-    <Compile Include="Models\DataConstructs\Credentials.cs" />
-    <Compile Include="Models\DataConstructs\PageState.cs" />
-    <Compile Include="Models\DataConstructs\StepDefinition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -146,7 +140,12 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BankLibrary\BankLibrary.csproj">
+      <Project>{8fb5a5fa-bcba-4e42-9f12-e9af2885c4f7}</Project>
+      <Name>BankLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

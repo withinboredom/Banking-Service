@@ -32,7 +32,7 @@ namespace Selenium
 
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
                 "binaries\\selenium-server-standalone-2.47.1.jar");
-            var process = new ProcessStartInfo("D:\\Program Files (x86)\\Java\\jdk1.8.0_25\\bin\\java.exe", "-Djava.net.preferIPv4Stack=true -jar " + path)
+            var process = new ProcessStartInfo("D:\\Program Files (x86)\\Java\\jdk1.8.0_25\\bin\\java.exe", "-Djava.net.preferIPv4Stack=true -jar " + path + " -role hub")
             {
                 CreateNoWindow = true,
                 UseShellExecute = false

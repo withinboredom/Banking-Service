@@ -4,10 +4,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using BankingService.Models.Banks;
-using BankingService.Models.DataConstructs;
+using BankLibrary.Banks;
+using BankLibrary.DataConstructs;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.PhantomJS;
+using OpenQA.Selenium.Remote;
 
 namespace BankingService.Controllers
 {
@@ -80,13 +82,11 @@ namespace BankingService.Controllers
                 new USAA(
                     new ChromeDriver(
                         ChromeDriverService.CreateDefaultService(AppDomain.CurrentDomain.RelativeSearchPath + "/binaries"), new ChromeOptions(), TimeSpan.FromSeconds(30))));*/
+            var r = new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), new DesiredCapabilities("PhantomJs", "", Platform.CurrentPlatform));
             driver = new BankDriver(
                 new USAA(
-                    new PhantomJSDriver(
-                        PhantomJSDriverService.CreateDefaultService(AppDomain.CurrentDomain.RelativeSearchPath + "/binaries")
-                        )
-                    )
-                );
+                    r
+                ));
             return driver.Login(creds);
         }
 
@@ -116,7 +116,7 @@ namespace BankingService.Controllers
         [Route("{id:guid}/login/step/{stepId:guid}")]
         public StepDefinition GetStep(Guid id, Guid stepId)
         {
-            return driver.steps[stepId];
+            return driver.Steps[stepId];
         }
     }
 }
