@@ -11,7 +11,7 @@ using Microsoft.Azure.WebJobs;
 namespace Selenium
 {
     // To learn more about Microsoft Azure WebJobs SDK, please see http://go.microsoft.com/fwlink/?LinkID=320976
-    class Program
+    class Program : IDisposable
     {
         // Please set the following connection strings in app.config for this WebJob to run:
         // AzureWebJobsDashboard and AzureWebJobsStorage
@@ -84,6 +84,11 @@ namespace Selenium
             }
 
             Environment.Exit(1);
+        }
+
+        public void Dispose()
+        {
+            proc_running.Kill();
         }
     }
 }

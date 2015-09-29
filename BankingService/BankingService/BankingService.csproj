@@ -105,6 +105,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="binaries\chromedriver.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="binaries\phantomjs.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -124,8 +127,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Banks\BankDriver.cs" />
+    <Compile Include="Models\Banks\USAA.cs" />
     <Compile Include="Models\DataConstructs\BankInformation.cs" />
     <Compile Include="Models\DataConstructs\Credentials.cs" />
+    <Compile Include="Models\DataConstructs\PageState.cs" />
     <Compile Include="Models\DataConstructs\StepDefinition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
