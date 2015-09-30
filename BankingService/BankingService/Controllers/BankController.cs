@@ -21,6 +21,7 @@ namespace BankingService.Controllers
     {
         private BankInformation getUSAA()
         {
+            
             var bank = new BankInformation()
             {
                 Canonical = "USAA",
@@ -78,15 +79,15 @@ namespace BankingService.Controllers
         [Route("{id:guid}/login")]
         public Guid Login(Guid id, [FromBody] Credentials creds)
         {
-            /*driver = new BankDriver(
-                new USAA(
-                    new ChromeDriver(
-                        ChromeDriverService.CreateDefaultService(AppDomain.CurrentDomain.RelativeSearchPath + "/binaries"), new ChromeOptions(), TimeSpan.FromSeconds(30))));*/
-            var r = new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), new DesiredCapabilities("PhantomJs", "", Platform.CurrentPlatform));
             driver = new BankDriver(
                 new USAA(
-                    r
-                ));
+                    new ChromeDriver(
+                        ChromeDriverService.CreateDefaultService(AppDomain.CurrentDomain.RelativeSearchPath + "/binaries"), new ChromeOptions(), TimeSpan.FromSeconds(30))));
+            //var r = new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), new DesiredCapabilities("PhantomJs", "", Platform.CurrentPlatform));
+            //driver = new BankDriver(
+            //    new USAA(
+            //        r
+            //    ));
             return driver.Login(creds);
         }
 
