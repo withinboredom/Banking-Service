@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using BankLibrary.DataConstructs;
 using OpenQA.Selenium;
 
@@ -142,6 +143,7 @@ namespace BankLibrary.Banks
 
                         while (question.ToLower() == "pin")
                         {
+                            Thread.Sleep(100);
                             question = _driver.FindElement(By.CssSelector("label[for='id3']")).Text;
                         }
 
