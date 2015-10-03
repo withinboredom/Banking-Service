@@ -1,11 +1,12 @@
 ﻿using System;
+using Interfaces;
 
 namespace BankLibrary.DataConstructs
 {
     /// <summary>
     /// What's needed
     /// </summary>
-    public class StepDefinition
+    public class StepDefinition : IStepDefinition
     {
         /// <summary>
         /// The id of the step

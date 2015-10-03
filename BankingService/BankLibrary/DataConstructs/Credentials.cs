@@ -1,9 +1,12 @@
-﻿namespace BankLibrary.DataConstructs
+﻿using System;
+using Interfaces;
+
+namespace BankLibrary.DataConstructs
 {
     /// <summary>
     /// A simple set of credentials
     /// </summary>
-    public class Credentials
+    public class Credentials : ICredentials
     {
         /// <summary>
         /// A username
@@ -24,5 +27,15 @@
         /// An answer to a question
         /// </summary>
         public string Question { get; set; }
+
+        /// <summary>
+        /// The bank id these credentials are associated with
+        /// </summary>
+        public Guid? BankId { get; set; }
+
+        /// <summary>
+        /// The step id of these credentials
+        /// </summary>
+        public Guid? StepId { get; set; }
     }
 }

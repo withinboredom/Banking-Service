@@ -4,8 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using BankLibrary.Banks;
 using BankLibrary.DataConstructs;
+using InfrastructureLibrary;
+using InfrastructureLibrary.Banks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.PhantomJS;
@@ -77,9 +78,9 @@ namespace BankingService.Controllers
         /// <returns>The step id</returns>
         [HttpPost]
         [Route("{id:guid}/login")]
-        public Guid Login(Guid id, [FromBody] Credentials creds)
+        public StepDefinition Login(Guid id, [FromBody] Credentials creds)
         {
-            driver = new BankDriver(
+            /*driver = new BankDriver(
                 new USAA(
                     new ChromeDriver(
                         ChromeDriverService.CreateDefaultService(AppDomain.CurrentDomain.RelativeSearchPath + "/binaries"), new ChromeOptions(), TimeSpan.FromSeconds(30))));
@@ -88,10 +89,10 @@ namespace BankingService.Controllers
             //    new USAA(
             //        r
             //    ));
-            return driver.Login(creds);
+            return driver.Login(creds);*/
+            BankDriver driver = new BankDriver();
+            return driver.Login(creds, id) as StepDefinition;
         }
-
-        private static BankDriver driver;
 
         /// <summary>
         /// Performs the next step in a multi-factor login
@@ -104,7 +105,8 @@ namespace BankingService.Controllers
         [Route("{id:guid}/login/step/{stepId:guid}")]
         public StepDefinition Step(Guid id, Guid stepId, [FromBody] Credentials creds)
         {
-            return driver.DoStep(stepId, creds);
+            //return driver.DoStep(stepId, creds);
+            return new StepDefinition();
         }
 
         /// <summary>
@@ -117,7 +119,8 @@ namespace BankingService.Controllers
         [Route("{id:guid}/login/step/{stepId:guid}")]
         public StepDefinition GetStep(Guid id, Guid stepId)
         {
-            return driver.Steps[stepId];
+            //return driver.Steps[stepId];
+            return new StepDefinition();
         }
     }
 }
