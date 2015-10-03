@@ -5,16 +5,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
+using Microsoft.ServiceBus.Messaging;
 
 namespace Banker
 {
     public class Functions
     {
-        // This function will get triggered/executed when a new message is written 
-        // on an Azure Queue called queue.
-        public static void ProcessQueueMessage([QueueTrigger("queue")] string message, TextWriter log)
+        public static void ProcessLogin([ServiceBusTrigger("bank_login_queue")] BrokeredMessage message,
+            TextWriter logger)
         {
-            log.WriteLine(message);
+            logger.WriteLine("Got message!");
+        }
+
+        public static void ProcessLoginDev([ServiceBusTrigger("bank_login_queue_dev")] BrokeredMessage message,
+            TextWriter logger)
+        {
+            logger.WriteLine("Got dev message!");
         }
     }
 }
