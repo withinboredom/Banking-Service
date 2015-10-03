@@ -1,36 +1,32 @@
 ﻿using System;
-using Interfaces;
 
-namespace BankLibrary.DataConstructs
+namespace Interfaces
 {
-    /// <summary>
-    /// What's needed
-    /// </summary>
-    public class StepDefinition : IStepDefinition
+    public interface IStepDefinition
     {
         /// <summary>
         /// The id of the step
         /// </summary>
-        public Guid? Id { get; set; }
+        Guid? Id { get; set; }
 
         /// <summary>
         /// The field to set
         /// </summary>
-        public string Field { get; set; }
+        string Field { get; set; }
 
         /// <summary>
         /// The data hint on what the field should contain
         /// </summary>
-        public string Data { get; set; }
+        string Data { get; set; }
 
         /// <summary>
         /// Whether or not this step was successful
         /// </summary>
-        public bool? Successful { get; set; }
+        bool? Successful { get; set; }
 
         /// <summary>
         /// The id of the next step to perform, if applicabale...
         /// </summary>
-        public Guid? NextStep { get; set; }
+        Guid? NextStep { get; set; }
     }
 }

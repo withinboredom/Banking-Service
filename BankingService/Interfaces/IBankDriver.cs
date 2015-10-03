@@ -1,7 +1,6 @@
 using System;
-using BankLibrary.DataConstructs;
 
-namespace BankLibrary.Banks
+namespace Interfaces
 {
     public interface IBankDriver
     {
@@ -10,7 +9,7 @@ namespace BankLibrary.Banks
         /// </summary>
         /// <param name="creds">The credentials to login with</param>
         /// <returns>A step</returns>
-        StepDefinition Login(Credentials creds);
+        IStepDefinition Login(ICredentials creds);
 
         /// <summary>
         /// Performs a step with a given set of credentials
@@ -18,6 +17,6 @@ namespace BankLibrary.Banks
         /// <param name="step">The step to operate on</param>
         /// <param name="creds">The credentials to operate with</param>
         /// <returns>The next step</returns>
-        StepDefinition DoStep(Guid step, Credentials creds);
+        IStepDefinition DoStep(Guid step, ICredentials creds);
     }
 }

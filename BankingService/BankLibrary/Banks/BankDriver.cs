@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BankLibrary.DataConstructs;
+using Interfaces;
 
 namespace BankLibrary.Banks
 {
@@ -58,10 +59,11 @@ namespace BankLibrary.Banks
         /// <summary>
         /// Attempts to login with a set of credentials
         /// </summary>
-        /// <param name="creds">The credentials to login with</param>
+        /// <param name="credentials">The credentials to login with</param>
         /// <returns>A step</returns>
-        public StepDefinition Login(Credentials creds)
+        public IStepDefinition Login(ICredentials credentials)
         {
+            var creds = credentials as Credentials;
             var step = new StepDefinition();
             this._currentStep = Guid.NewGuid();
             step.Id = _currentStep;
@@ -78,8 +80,9 @@ namespace BankLibrary.Banks
         /// <param name="step">The step to operate on</param>
         /// <param name="creds">The credentials to operate with</param>
         /// <returns>The next step</returns>
-        public StepDefinition DoStep(Guid step, Credentials creds)
+        public IStepDefinition DoStep(Guid step, ICredentials creds)
         {
+            var credentials = creds as Credentials;
             var successful = Steps[step].Successful;
             if (successful.HasValue && successful.Value)
             {
@@ -89,7 +92,7 @@ namespace BankLibrary.Banks
             Steps[step].Successful = true;
             var nextStep = Steps[step].NextStep;
             if (nextStep != null) _currentStep = nextStep.Value;
-            _bank.Login(creds);
+            _bank.Login(credentials);
             return this.Steps[_currentStep];
         }
 

@@ -1,9 +1,11 @@
-﻿namespace BankLibrary.DataConstructs
+﻿using Interfaces;
+
+namespace BankLibrary.DataConstructs
 {
     /// <summary>
     /// A simple set of credentials
     /// </summary>
-    public class Credentials
+    public class Credentials : ICredentials
     {
         /// <summary>
         /// A username
