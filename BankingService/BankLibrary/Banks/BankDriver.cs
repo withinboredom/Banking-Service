@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using BankLibrary.DataConstructs;
 using Interfaces;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.PhantomJS;
 
 namespace BankLibrary.Banks
 {
@@ -22,6 +25,26 @@ namespace BankLibrary.Banks
             Steps = new Dictionary<Guid, StepDefinition>();
 
             this._bank = bank;
+        }
+
+        public static IBankDriver CreateDriver(bool debug)
+        {
+            IWebDriver driver;
+            if (debug)
+            {
+                driver =
+                    new ChromeDriver(
+                        ChromeDriverService.CreateDefaultService(AppDomain.CurrentDomain.BaseDirectory +
+                                                                 "/binaries"));
+            }
+            else
+            {
+                driver = new PhantomJSDriver(
+                    PhantomJSDriverService.CreateDefaultService(AppDomain.CurrentDomain.BaseDirectory +
+                                                                "/binaries"));
+            }
+
+            return new BankDriver(new USAA(driver));
         }
 
         /// <summary>
@@ -113,7 +136,7 @@ namespace BankLibrary.Banks
             Steps[thisStep].Successful = success;
             Steps[thisStep].NextStep = next = Guid.NewGuid();
 
-            this.Steps.Add(next, new StepDefinition() {Data = "", Field = "", Id = next, Successful = false});
+            this.Steps.Add(next, new StepDefinition() { Data = "", Field = "", Id = next, Successful = false });
 
             return next;
         }

@@ -17,10 +17,7 @@ namespace InfrastructureLibrary.Banks
         public IStepDefinition Login(ICredentials creds, Guid bankId)
         {
             var connString = CloudConfigurationManager.GetSetting("AzureWebJobsServiceBus");
-            var r = new AppSettingsReader();
-            connString = r.GetValue("AzureWebJobsServiceBus", connString.GetType()) as string;
             var namespaceManager = NamespaceManager.CreateFromConnectionString(connString);
-            var client = QueueClient.CreateFromConnectionString(connString);
             var queue = "bank_login_queue";
 #if DEBUG
             queue += "_dev";
@@ -29,6 +26,8 @@ namespace InfrastructureLibrary.Banks
             {
                 namespaceManager.CreateQueue(new QueueDescription(queue) { LockDuration = TimeSpan.FromMinutes(3) });
             }
+
+            var client = QueueClient.CreateFromConnectionString(connString, queue);
 
             creds.BankId = bankId;
 

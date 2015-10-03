@@ -4,6 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BankLibrary.Banks;
+using BankLibrary.DataConstructs;
+using Interfaces;
 using Microsoft.Azure.WebJobs;
 using Microsoft.ServiceBus.Messaging;
 
@@ -21,6 +24,15 @@ namespace Banker
             TextWriter logger)
         {
             logger.WriteLine("Got dev message!");
+            var creds = message.GetBody<Credentials>();
+            DoLogin(creds, true);
+        }
+
+        private static void DoLogin(ICredentials creds, bool debug = false)
+        {
+            if (!creds.BankId.HasValue) throw new Exception("No bank id set");
+
+            BankDriver.CreateDriver(debug).Login(creds, creds.BankId.Value);
         }
     }
 }

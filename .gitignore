@@ -197,3 +197,4 @@ FakesAssemblies/
 
 # Development transforms
 App.*.config
+Web.config
