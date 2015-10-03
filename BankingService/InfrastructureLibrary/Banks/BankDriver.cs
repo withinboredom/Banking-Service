@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BankLibrary.DataConstructs;
 using Interfaces;
+using Microsoft.Azure;
 using Microsoft.ServiceBus;
 using Microsoft.ServiceBus.Messaging;
 using Microsoft.WindowsAzure;
