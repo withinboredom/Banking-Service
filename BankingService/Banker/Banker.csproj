@@ -105,6 +105,17 @@
     <None Include="packages.config" />
     <None Include="Properties\SlowCheetah\SlowCheetah.Transforms.targets" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="binaries\chromedriver.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="binaries\phantomjs.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="binaries\selenium-server-standalone-2.47.1.jar">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SlowCheetahTargets)" Condition="Exists('$(SlowCheetahTargets)')" Label="SlowCheetah" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
