@@ -27,10 +27,21 @@ namespace InfrastructureLibrary.Banks
                 namespaceManager.CreateQueue(new QueueDescription(queue) { LockDuration = TimeSpan.FromMinutes(3) });
             }
 
-            var message = new BrokeredMessage(creds)
-            {
+            creds.BankId = bankId;
 
+            var step = new StepDefinition()
+            {
+                Id = Guid.NewGuid(),
+                Successful = false,
+                Field = "",
+                Data = "",
+                NextStep = null
             };
+
+            creds.StepId = step.Id;
+
+            var message = new BrokeredMessage(creds);
+            client.Send(message);
 
             return new StepDefinition();
         }

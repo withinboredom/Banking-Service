@@ -1,4 +1,6 @@
-﻿namespace Interfaces
+﻿using System;
+
+namespace Interfaces
 {
     public interface ICredentials
     {
@@ -21,5 +23,15 @@
         /// An answer to a question
         /// </summary>
         string Question { get; set; }
+
+        /// <summary>
+        /// A bank id for these credentials
+        /// </summary>
+        Guid? BankId { get; set; }
+
+        /// <summary>
+        /// The step id this is meant for
+        /// </summary>
+        Guid? StepId { get; set; }
     }
 }
