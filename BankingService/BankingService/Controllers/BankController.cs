@@ -79,7 +79,7 @@ namespace BankingService.Controllers
         [Route("{id:guid}/login")]
         public Guid Login(Guid id, [FromBody] Credentials creds)
         {
-            driver = new BankDriver(
+            /*driver = new BankDriver(
                 new USAA(
                     new ChromeDriver(
                         ChromeDriverService.CreateDefaultService(AppDomain.CurrentDomain.RelativeSearchPath + "/binaries"), new ChromeOptions(), TimeSpan.FromSeconds(30))));
@@ -88,10 +88,9 @@ namespace BankingService.Controllers
             //    new USAA(
             //        r
             //    ));
-            return driver.Login(creds);
+            return driver.Login(creds);*/
+            return Guid.NewGuid();
         }
-
-        private static BankDriver driver;
 
         /// <summary>
         /// Performs the next step in a multi-factor login
@@ -104,7 +103,8 @@ namespace BankingService.Controllers
         [Route("{id:guid}/login/step/{stepId:guid}")]
         public StepDefinition Step(Guid id, Guid stepId, [FromBody] Credentials creds)
         {
-            return driver.DoStep(stepId, creds);
+            //return driver.DoStep(stepId, creds);
+            return new StepDefinition();
         }
 
         /// <summary>
@@ -117,7 +117,8 @@ namespace BankingService.Controllers
         [Route("{id:guid}/login/step/{stepId:guid}")]
         public StepDefinition GetStep(Guid id, Guid stepId)
         {
-            return driver.Steps[stepId];
+            //return driver.Steps[stepId];
+            return new StepDefinition();
         }
     }
 }
