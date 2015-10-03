@@ -18,7 +18,7 @@ namespace Banker
             {
                 var host = new JobHost();
                 // The following code ensures that the WebJob will be running continuously
-                host.Start();
+                host.RunAndBlock();
             }
             catch (Exception ex)
             {
