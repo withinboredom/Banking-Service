@@ -49,6 +49,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Banks\Bank.cs" />
     <Compile Include="Banks\BankDriver.cs" />
     <Compile Include="Banks\USAA.cs" />
     <Compile Include="DataConstructs\BankInformation.cs" />
