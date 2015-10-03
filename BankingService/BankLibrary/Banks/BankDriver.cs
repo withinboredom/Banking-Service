@@ -61,7 +61,7 @@ namespace BankLibrary.Banks
         /// </summary>
         /// <param name="credentials">The credentials to login with</param>
         /// <returns>A step</returns>
-        public IStepDefinition Login(ICredentials credentials)
+        public IStepDefinition Login(ICredentials credentials, Guid bankId)
         {
             var creds = credentials as Credentials;
             var step = new StepDefinition();
