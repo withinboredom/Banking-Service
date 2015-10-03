@@ -3,6 +3,9 @@
   "WebJobs": [
     {
       "filePath": "../Selenium/Selenium.csproj"
+    },
+    {
+      "filePath": "../Banker/Banker.csproj"
     }
   ]
 }
