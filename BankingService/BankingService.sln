@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankLibrary", "BankLibrary\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{DA4F69B9-912D-4411-B016-C836F3D7F498}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfrastructureLibrary", "InfrastructureLibrary\InfrastructureLibrary.csproj", "{84FC54D4-6FDE-4835-906B-4DB64A720CA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{DA4F69B9-912D-4411-B016-C836F3D7F498}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA4F69B9-912D-4411-B016-C836F3D7F498}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA4F69B9-912D-4411-B016-C836F3D7F498}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84FC54D4-6FDE-4835-906B-4DB64A720CA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84FC54D4-6FDE-4835-906B-4DB64A720CA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84FC54D4-6FDE-4835-906B-4DB64A720CA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84FC54D4-6FDE-4835-906B-4DB64A720CA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,5 +71,6 @@ Global
 		{697E167F-EA73-4B1F-B38B-DB9F252DCDF6} = {5E284A08-B8DC-4099-BC03-81BEE519A056}
 		{8FB5A5FA-BCBA-4E42-9F12-E9AF2885C4F7} = {697E167F-EA73-4B1F-B38B-DB9F252DCDF6}
 		{DA4F69B9-912D-4411-B016-C836F3D7F498} = {5E284A08-B8DC-4099-BC03-81BEE519A056}
+		{84FC54D4-6FDE-4835-906B-4DB64A720CA3} = {697E167F-EA73-4B1F-B38B-DB9F252DCDF6}
 	EndGlobalSection
 EndGlobal
