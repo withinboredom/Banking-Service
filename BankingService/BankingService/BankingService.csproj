@@ -168,6 +168,14 @@
       <Project>{8fb5a5fa-bcba-4e42-9f12-e9af2885c4f7}</Project>
       <Name>BankLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\InfrastructureLibrary\InfrastructureLibrary.csproj">
+      <Project>{84fc54d4-6fde-4835-906b-4db64a720ca3}</Project>
+      <Name>InfrastructureLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{DA4F69B9-912D-4411-B016-C836F3D7F498}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

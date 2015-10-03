@@ -4,8 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using BankLibrary.Banks;
 using BankLibrary.DataConstructs;
+using InfrastructureLibrary;
+using InfrastructureLibrary.Banks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.PhantomJS;
@@ -77,7 +78,7 @@ namespace BankingService.Controllers
         /// <returns>The step id</returns>
         [HttpPost]
         [Route("{id:guid}/login")]
-        public Guid Login(Guid id, [FromBody] Credentials creds)
+        public StepDefinition Login(Guid id, [FromBody] Credentials creds)
         {
             /*driver = new BankDriver(
                 new USAA(
@@ -89,7 +90,8 @@ namespace BankingService.Controllers
             //        r
             //    ));
             return driver.Login(creds);*/
-            return Guid.NewGuid();
+            BankDriver driver = new BankDriver();
+            return driver.Login(creds, id) as StepDefinition;
         }
 
         /// <summary>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,11 +12,13 @@ using Microsoft.WindowsAzure;
 
 namespace InfrastructureLibrary.Banks
 {
-    class BankDriver : IBankDriver
+    public class BankDriver : IBankDriver
     {
         public IStepDefinition Login(ICredentials creds, Guid bankId)
         {
-            var connString = CloudConfigurationManager.GetSetting("AzureQueue");
+            var connString = CloudConfigurationManager.GetSetting("AzureWebJobsServiceBus");
+            var r = new AppSettingsReader();
+            connString = r.GetValue("AzureWebJobsServiceBus", connString.GetType()) as string;
             var namespaceManager = NamespaceManager.CreateFromConnectionString(connString);
             var client = QueueClient.CreateFromConnectionString(connString);
             var queue = "bank_login_queue";
@@ -43,7 +46,7 @@ namespace InfrastructureLibrary.Banks
             var message = new BrokeredMessage(creds);
             client.Send(message);
 
-            return new StepDefinition();
+            return step;
         }
 
         public IStepDefinition DoStep(Guid step, ICredentials creds)
