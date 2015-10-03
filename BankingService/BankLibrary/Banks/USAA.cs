@@ -10,6 +10,36 @@ namespace BankLibrary.Banks
     /// </summary>
     public class USAA : Bank
     {
+        /// <summary>
+        /// Indicates that a username is required
+        /// </summary>
+        public override event Action RequireUserName;
+
+        /// <summary>
+        /// Indicates a password is required
+        /// </summary>
+        public override event Action RequirePassword;
+
+        /// <summary>
+        /// Indicates that a pin is required
+        /// </summary>
+        public override event Action RequirePin;
+
+        /// <summary>
+        /// Indicates a login was successfully made
+        /// </summary>
+        public override event Action LoginComplete;
+
+        /// <summary>
+        /// Indicates an invalid login
+        /// </summary>
+        public override event Action LoginFailed;
+
+        /// <summary>
+        /// Indicates that a question is required
+        /// </summary>
+        public override event Action<string> RequireQuestion;
+
         public USAA(IWebDriver driver) : base(driver)
         {
         }
