@@ -9,7 +9,7 @@ namespace BankLibrary.Banks
     /// </summary>
     public class BankDriver
     {
-        public BankDriver(USAA bank)
+        public BankDriver(Bank bank)
         {
             bank.RequirePin += BankOnRequirePin;
             bank.RequirePassword += BankOnRequirePassword;
@@ -28,7 +28,7 @@ namespace BankLibrary.Banks
         /// </summary>
         private void BankOnLoginFailed()
         {
-            this.Steps[_currentStep].Successful = false;
+            Steps[_currentStep].Successful = false;
             CreateNextStep("Failed", "Failed to login", false, _currentStep);
         }
 
@@ -39,7 +39,7 @@ namespace BankLibrary.Banks
 
         public Dictionary<Guid, StepDefinition> Steps { get; private set; }
         private Guid _currentStep;
-        private readonly USAA _bank;
+        private readonly Bank _bank;
 
         public Guid Login(Credentials creds)
         {
