@@ -73,9 +73,6 @@ IF /I "BankingService\BankingService.sln" NEQ "" (
   IF !ERRORLEVEL! NEQ 0 goto error
 )
 
-echo "Moving web.config to deployment"
-copy "%DEPLOYMENT_SOURCE%\BankingService\BankingService\Web.example.config" "%DEPLOYMENT_TEMP%\BankingService\BankingService\Web.config"
-
 :: 2. Build to the temporary path
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
   call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\BankingService\BankingService\BankingService.csproj" /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="%DEPLOYMENT_TEMP%";AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release /p:SolutionDir="%DEPLOYMENT_SOURCE%\BankingService\\" %SCM_BUILD_ARGS%
@@ -88,6 +85,8 @@ IF !ERRORLEVEL! NEQ 0 goto error
 :: 3. KuduSync
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
   call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_TEMP%" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
+  echo "Moving web.config to deployment: %DEPLOYMENT_TARGET%"
+copy "%DEPLOYMENT_TARGET%\Web.example.config" "%DEPLOYMENT_TARGET%\Web.config"
   IF !ERRORLEVEL! NEQ 0 goto error
 )
 
