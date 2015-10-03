@@ -7,7 +7,7 @@ namespace BankLibrary.Banks
     /// <summary>
     /// Drives a bank interface
     /// </summary>
-    public class BankDriver
+    public class BankDriver : IBankDriver
     {
         public BankDriver(Bank bank)
         {
