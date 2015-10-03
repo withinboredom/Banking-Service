@@ -2,7 +2,7 @@ using System;
 
 namespace Interfaces
 {
-    public interface IBankDriver
+    public interface IBankDriver : IDisposable
     {
         /// <summary>
         /// Attempts to login with a set of credentials

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BankLibrary.Banks;
 using BankLibrary.DataConstructs;
 using Interfaces;
@@ -32,7 +28,9 @@ namespace Banker
         {
             if (!creds.BankId.HasValue) throw new Exception("No bank id set");
 
-            BankDriver.CreateDriver(debug).Login(creds, creds.BankId.Value);
+            var driver = BankDriver.CreateDriver(debug);
+            driver.Login(creds, creds.BankId.Value);
+            driver.Dispose();
         }
     }
 }

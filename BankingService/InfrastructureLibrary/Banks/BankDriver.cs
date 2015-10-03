@@ -52,5 +52,10 @@ namespace InfrastructureLibrary.Banks
         {
             return new StepDefinition();
         }
+
+        public void Dispose()
+        {
+            
+        }
     }
 }

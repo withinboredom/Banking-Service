@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 namespace BankLibrary.Banks
 {
-    public abstract class Bank
+    public abstract class Bank : IDisposable
     {
         protected IWebDriver Driver;
 
@@ -88,5 +88,10 @@ namespace BankLibrary.Banks
         /// <param name="creds">The credentials to use</param>
         /// <param name="state">The state to load from, null to start at the beginning</param>
         public abstract void Login(Credentials creds, PageState state = null);
+
+        public void Dispose()
+        {
+            Driver.Dispose();
+        }
     }
 }

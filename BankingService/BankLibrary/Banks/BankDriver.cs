@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using BankLibrary.DataConstructs;
 using Interfaces;
 using OpenQA.Selenium;
@@ -83,6 +84,7 @@ namespace BankLibrary.Banks
         /// Attempts to login with a set of credentials
         /// </summary>
         /// <param name="credentials">The credentials to login with</param>
+        /// <param name="bankId">The bank id to login to</param>
         /// <returns>A step</returns>
         public IStepDefinition Login(ICredentials credentials, Guid bankId)
         {
@@ -172,6 +174,11 @@ namespace BankLibrary.Banks
         private void BankOnRequirePin()
         {
             CreateNextStep("Pin", "Pin", false, _currentStep);
+        }
+
+        public void Dispose()
+        {
+            _bank.Dispose();
         }
     }
 }
