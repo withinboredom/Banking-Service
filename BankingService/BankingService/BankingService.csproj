@@ -202,7 +202,7 @@
   </ProjectExtensions>
   <Import Project="..\packages\Microsoft.Web.WebJobs.Publish.1.0.7\tools\webjobs.targets" Condition="Exists('..\packages\Microsoft.Web.WebJobs.Publish.1.0.7\tools\webjobs.targets')" />
   <PropertyGroup>
-    <PreBuildEvent>ECHO F | XCOPY /D "$(ProjectDir)Web.example.config" "$(ProjectDir)Web.config"</PreBuildEvent>
+    <PreBuildEvent>ECHO F | XCOPY /D /Y "$(ProjectDir)Web.example.config" "$(ProjectDir)Web.config"</PreBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\Microsoft.Web.WebJobs.Publish.1.0.5\tools\webjobs.targets" Condition="Exists('..\packages\Microsoft.Web.WebJobs.Publish.1.0.5\tools\webjobs.targets')" />
   <Import Project="..\packages\Microsoft.Web.WebJobs.Publish.1.0.7\tools\webjobs.targets" Condition="Exists('..\packages\Microsoft.Web.WebJobs.Publish.1.0.7\tools\webjobs.targets')" />
