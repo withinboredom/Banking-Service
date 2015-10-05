@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataLibrary.DataConstructs;
 using Interfaces;
-using Microsoft.Azure;
-using Microsoft.ServiceBus;
 using Microsoft.ServiceBus.Messaging;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Table;
 
 namespace InfrastructureLibrary.Banks
@@ -32,8 +22,6 @@ namespace InfrastructureLibrary.Banks
             var queue = "bank_login_queue"; //todo: Make this an app setting
             Infrastrucure.CreateQueue(queue);
 
-            var client = Infrastrucure.GetQueueClient(queue);
-
             creds.BankId = bankId;
 
             var step = new StepDefinition()
@@ -47,12 +35,8 @@ namespace InfrastructureLibrary.Banks
 
             creds.StepId = step.Id;
 
-            var table = Infrastrucure.GetTable("steps");
-            table.Execute(TableOperation.Insert(step));
-
-            var message = new BrokeredMessage(creds);
-            client.Send(message);
-
+            Infrastrucure.SendBackedMessage(queue, new BrokeredMessage(creds), "steps", step);
+            
             return step;
         }
 

@@ -76,6 +76,19 @@ namespace InfrastructureLibrary
             return QueueClient.CreateFromConnectionString(GetQueueConnectionString(), queueName);
         }
 
+        public static bool SendMessage(BrokeredMessage message, string queue)
+        {
+            GetQueueClient(queue).Send(message);
+            return true;
+        }
+
+        public static bool SendBackedMessage(string queue, BrokeredMessage message, string table, ITableEntity entity)
+        {
+            GetTable(table).Execute(TableOperation.InsertOrMerge(entity));
+            SendMessage(message, queue);
+            return true;
+        }
+
         #endregion
 
         #region storage
@@ -84,8 +97,8 @@ namespace InfrastructureLibrary
 
         private static string GetStorageConnectionString()
         {
-            return _queueConnectionString ??
-                   (_queueConnectionString = CloudConfigurationManager.GetSetting("AzureWebJobsStorage"));
+            return _storageConnectionString ??
+                   (_storageConnectionString = CloudConfigurationManager.GetSetting("AzureWebJobsStorage"));
         }
 
         public static CloudStorageAccount GetStorageAccount()
