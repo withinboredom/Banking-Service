@@ -160,10 +160,6 @@
     <Content Include="Properties\webjobs-list.json" />
     <None Include="Properties\PublishProfiles\BankingService%28blog%29.pubxml" />
     <None Include="Web.config" />
-    <Content Include="BankingService.dll.config">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BankLibrary\BankLibrary.csproj">
