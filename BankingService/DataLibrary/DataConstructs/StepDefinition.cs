@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 using Interfaces;
 using Microsoft.WindowsAzure.Storage.Table;
 
@@ -9,6 +10,9 @@ namespace DataLibrary.DataConstructs
     /// </summary>
     public class StepDefinition : TableEntity, IStepDefinition
     {
+        private Guid _bankId;
+        private Guid _userId;
+
         /// <summary>
         /// The id of the step
         /// </summary>
@@ -34,6 +38,32 @@ namespace DataLibrary.DataConstructs
         /// </summary>
         public Guid? NextStep { get; set; }
 
+        /// <summary>
+        /// The bank id of this step
+        /// </summary>
+        public Guid BankId
+        {
+            get { return _bankId; }
+            set
+            {
+                _bankId = value;
+                RowKey = SHA1.Create(value.ToString()).ToString();
+            }
+        }
+
+        /// <summary>
+        /// The user id of this step
+        /// </summary>
+        public Guid UserId
+        {
+            get { return _userId; }
+            set
+            {
+                _userId = value;
+                PartitionKey = SHA1.Create(value.ToString()).ToString();
+            }
+        }
+
         public StepDefinition(IStepDefinition copy)
         {
             Id = copy.Id;
@@ -41,11 +71,13 @@ namespace DataLibrary.DataConstructs
             Data = copy.Data;
             Successful = copy.Successful;
             NextStep = copy.NextStep;
+            BankId = copy.BankId;
+            UserId = copy.UserId;
+
+            PartitionKey = SHA1.Create(UserId.ToString()).ToString();
+            RowKey = SHA1.Create(BankId.ToString()).ToString();
         }
 
-        public StepDefinition()
-        {
-
-        }
+        public StepDefinition() { }
     }
 }

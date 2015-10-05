@@ -28,5 +28,15 @@ namespace Interfaces
         /// The id of the next step to perform, if applicabale...
         /// </summary>
         Guid? NextStep { get; set; }
+
+        /// <summary>
+        /// The bank id this step was operated against
+        /// </summary>
+        Guid BankId { get; set; }
+
+        /// <summary>
+        /// The user id this step belongs to
+        /// </summary>
+        Guid UserId { get; set; }
     }
 }
