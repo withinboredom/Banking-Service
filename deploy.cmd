@@ -66,6 +66,8 @@ IF NOT DEFINED PROJECT (
 	SET PROJECT=BankingService
 )
 
+echo Building %PROJECT%
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: Deployment
 :: ----------
