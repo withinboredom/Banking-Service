@@ -1,7 +1,7 @@
 ﻿using System;
 using Interfaces;
 
-namespace BankLibrary.DataConstructs
+namespace DataLibrary.DataConstructs
 {
     /// <summary>
     /// A simple set of credentials

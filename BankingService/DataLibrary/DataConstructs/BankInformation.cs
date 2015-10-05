@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BankLibrary.DataConstructs
+namespace DataLibrary.DataConstructs
 {
     /// <summary>
     /// Contains information about a banking institution

@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8FB5A5FA-BCBA-4E42-9F12-E9AF2885C4F7}</ProjectGuid>
+    <ProjectGuid>{9E243031-115B-464E-8718-B57E92F08887}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BankLibrary</RootNamespace>
-    <AssemblyName>BankLibrary</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <RootNamespace>DataLibrary</RootNamespace>
+    <AssemblyName>DataLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -78,19 +77,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Banks\Bank.cs" />
-    <Compile Include="Banks\BankDriver.cs" />
-    <Compile Include="Banks\USAA.cs" />
+    <Compile Include="DataConstructs\BankInformation.cs" />
+    <Compile Include="DataConstructs\Credentials.cs" />
+    <Compile Include="DataConstructs\PageState.cs" />
+    <Compile Include="DataConstructs\StepDefinition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\InfrastructureLibrary\InfrastructureLibrary.csproj">
-      <Project>{84fc54d4-6fde-4835-906b-4db64a720ca3}</Project>
-      <Name>InfrastructureLibrary</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Interfaces\Interfaces.csproj">
       <Project>{da4f69b9-912d-4411-b016-c836f3d7f498}</Project>
       <Name>Interfaces</Name>

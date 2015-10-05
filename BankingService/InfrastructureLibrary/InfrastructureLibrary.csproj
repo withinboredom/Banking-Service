@@ -84,9 +84,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BankLibrary\BankLibrary.csproj">
-      <Project>{8FB5A5FA-BCBA-4E42-9F12-E9AF2885C4F7}</Project>
-      <Name>BankLibrary</Name>
+    <ProjectReference Include="..\DataLibrary\DataLibrary.csproj">
+      <Project>{9e243031-115b-464e-8718-b57e92f08887}</Project>
+      <Name>DataLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\Interfaces\Interfaces.csproj">
       <Project>{da4f69b9-912d-4411-b016-c836f3d7f498}</Project>

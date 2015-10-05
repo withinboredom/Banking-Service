@@ -2,7 +2,7 @@
 using Interfaces;
 using Microsoft.WindowsAzure.Storage.Table;
 
-namespace BankLibrary.DataConstructs
+namespace DataLibrary.DataConstructs
 {
     /// <summary>
     /// What's needed
