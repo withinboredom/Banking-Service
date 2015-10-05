@@ -2,7 +2,6 @@
 using DataLibrary.DataConstructs;
 using Interfaces;
 using Microsoft.ServiceBus.Messaging;
-using Microsoft.WindowsAzure.Storage.Table;
 
 namespace InfrastructureLibrary.Banks
 {
