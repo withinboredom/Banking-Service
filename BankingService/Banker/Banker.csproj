@@ -133,6 +133,10 @@
       <Project>{8FB5A5FA-BCBA-4E42-9F12-E9AF2885C4F7}</Project>
       <Name>BankLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataLibrary\DataLibrary.csproj">
+      <Project>{9e243031-115b-464e-8718-b57e92f08887}</Project>
+      <Name>DataLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Interfaces\Interfaces.csproj">
       <Project>{DA4F69B9-912D-4411-B016-C836F3D7F498}</Project>
       <Name>Interfaces</Name>

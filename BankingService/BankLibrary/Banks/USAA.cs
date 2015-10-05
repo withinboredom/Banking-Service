@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading;
-using BankLibrary.DataConstructs;
+using DataLibrary.DataConstructs;
 using OpenQA.Selenium;
 
 namespace BankLibrary.Banks

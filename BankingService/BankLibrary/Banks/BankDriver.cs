@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
-using BankLibrary.DataConstructs;
+using DataLibrary.DataConstructs;
 using Interfaces;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;

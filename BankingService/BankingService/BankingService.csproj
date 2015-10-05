@@ -162,9 +162,9 @@
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BankLibrary\BankLibrary.csproj">
-      <Project>{8fb5a5fa-bcba-4e42-9f12-e9af2885c4f7}</Project>
-      <Name>BankLibrary</Name>
+    <ProjectReference Include="..\DataLibrary\DataLibrary.csproj">
+      <Project>{9e243031-115b-464e-8718-b57e92f08887}</Project>
+      <Name>DataLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\InfrastructureLibrary\InfrastructureLibrary.csproj">
       <Project>{84fc54d4-6fde-4835-906b-4db64a720ca3}</Project>

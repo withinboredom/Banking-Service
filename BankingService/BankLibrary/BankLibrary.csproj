@@ -87,6 +87,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataLibrary\DataLibrary.csproj">
+      <Project>{9e243031-115b-464e-8718-b57e92f08887}</Project>
+      <Name>DataLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InfrastructureLibrary\InfrastructureLibrary.csproj">
       <Project>{84fc54d4-6fde-4835-906b-4db64a720ca3}</Project>
       <Name>InfrastructureLibrary</Name>

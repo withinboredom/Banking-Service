@@ -1,5 +1,5 @@
 using System;
-using BankLibrary.DataConstructs;
+using DataLibrary.DataConstructs;
 using OpenQA.Selenium;
 
 namespace BankLibrary.Banks
@@ -54,7 +54,7 @@ namespace BankLibrary.Banks
             var cookies = Driver.Manage().Cookies.AllCookies;
             var page = Driver.Url;
 
-            var state = new PageState() {cookies = cookies, Url = page, Step = step};
+            var state = new PageState() {Cookies = cookies, Url = page, Step = step};
             return state;
         }
 
@@ -72,7 +72,7 @@ namespace BankLibrary.Banks
                 return 0;
             }
 
-            foreach (var cookie in state.cookies)
+            foreach (var cookie in state.Cookies)
             {
                 Driver.Manage().Cookies.AddCookie(cookie);
             }
