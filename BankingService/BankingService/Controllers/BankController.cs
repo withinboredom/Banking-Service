@@ -65,7 +65,7 @@ namespace BankingService.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("{id:guid}")]
-        public BankInformation Get(Guid id)
+        public BankInformation GetById(Guid id)
         {
             return getUSAA();
         }
