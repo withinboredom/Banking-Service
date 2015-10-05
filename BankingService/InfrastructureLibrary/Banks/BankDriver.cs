@@ -10,25 +10,29 @@ using Microsoft.Azure;
 using Microsoft.ServiceBus;
 using Microsoft.ServiceBus.Messaging;
 using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Table;
 
 namespace InfrastructureLibrary.Banks
 {
+    /// <summary>
+    /// Infrastructure bank driver
+    /// </summary>
     public class BankDriver : IBankDriver
     {
+        /// <summary>
+        /// Queues a login command with a set of credentials
+        /// </summary>
+        /// <param name="creds">The credentials to login with</param>
+        /// <param name="bankId">The bank id to use</param>
+        /// <returns>A step in progress</returns>
         public IStepDefinition Login(ICredentials creds, Guid bankId)
         {
-            var connString = CloudConfigurationManager.GetSetting("AzureWebJobsServiceBus");
-            var namespaceManager = NamespaceManager.CreateFromConnectionString(connString);
-            var queue = "bank_login_queue";
-#if DEBUG
-            queue += "_dev";
-#endif
-            if (!namespaceManager.QueueExists(queue))
-            {
-                namespaceManager.CreateQueue(new QueueDescription(queue) { LockDuration = TimeSpan.FromMinutes(3) });
-            }
+            var queue = "bank_login_queue"; //todo: Make this an app setting
+            Infrastrucure.CreateQueue(queue);
 
-            var client = QueueClient.CreateFromConnectionString(connString, queue);
+            var client = Infrastrucure.GetQueueClient(queue);
 
             creds.BankId = bankId;
 
