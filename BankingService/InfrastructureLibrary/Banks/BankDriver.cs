@@ -47,6 +47,9 @@ namespace InfrastructureLibrary.Banks
 
             creds.StepId = step.Id;
 
+            var table = Infrastrucure.GetTable("steps");
+            table.Execute(TableOperation.Insert(step));
+
             var message = new BrokeredMessage(creds);
             client.Send(message);
 

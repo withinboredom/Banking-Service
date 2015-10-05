@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.Azure;
 using Microsoft.ServiceBus;
 using Microsoft.ServiceBus.Messaging;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Table;
 
 namespace InfrastructureLibrary
 {
@@ -77,6 +79,27 @@ namespace InfrastructureLibrary
         #endregion
 
         #region storage
+
+        private static string _storageConnectionString;
+
+        private static string GetStorageConnectionString()
+        {
+            return _queueConnectionString ??
+                   (_queueConnectionString = CloudConfigurationManager.GetSetting("AzureWebJobsStorage"));
+        }
+
+        public static CloudStorageAccount GetStorageAccount()
+        {
+            return CloudStorageAccount.Parse(GetStorageConnectionString());
+        }
+
+        public static CloudTable GetTable(string table)
+        {
+            var client = GetStorageAccount().CreateCloudTableClient().GetTableReference(table);
+            client.CreateIfNotExists();
+            return client;
+        }
+
         #endregion
     }
 }

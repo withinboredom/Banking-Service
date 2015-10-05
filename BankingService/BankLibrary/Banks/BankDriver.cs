@@ -89,6 +89,7 @@ namespace BankLibrary.Banks
         public IStepDefinition Login(ICredentials credentials, Guid bankId)
         {
             var creds = credentials as Credentials;
+
             var step = new StepDefinition();
             this._currentStep = Guid.NewGuid();
             step.Id = _currentStep;
