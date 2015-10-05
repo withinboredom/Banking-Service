@@ -40,7 +40,7 @@ namespace BankingService
                         // additional fields by chaining methods off SingleApiVersion.
                         //
                         c.SingleApiVersion("v1", "BankingService");
-                        //c.IncludeXmlComments(AppDomain.CurrentDomain.BaseDirectory + "bin\\BankingService.XML");
+                        c.IncludeXmlComments(AppDomain.CurrentDomain.BaseDirectory + "bin\\BankingService.XML");
 
                         // If your API has multiple versions, use "MultipleApiVersions" instead of "SingleApiVersion".
                         // In this case, you must provide a lambda that tells Swashbuckle which actions should be
