@@ -20,7 +20,7 @@ nuget Microsoft.WindowsAzure.ConfigurationManager 3.1.0
 nuget Newtonsoft.Json 7.0.1
 nuget Selenium.Support 2.47.0
 nuget Selenium.WebDriver 2.47.0
-nuget SlowCheetah 2.5.15 framework: >= net452
+nuget SlowCheetah 2.5.15 framework: >= net46
 nuget Swashbuckle 5.2.2 framework: >= net46
 nuget Swashbuckle.Core 5.2.2 framework: >= net46
 nuget System.IdentityModel.Tokens.Jwt 4.0.2.206221351 framework: >= net46
