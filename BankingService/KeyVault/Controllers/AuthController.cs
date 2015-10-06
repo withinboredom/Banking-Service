@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Security.Cryptography;
+using System.Text;
 using System.Web.DynamicData;
 using System.Web.Http;
 using KeyVault.Models.Auth;
@@ -18,7 +19,7 @@ namespace KeyVault.Controllers
     {
         [Route("create")]
         [HttpPut]
-        public IAuth CreateAuth([FromBody] IAuth authRequest)
+        public IAuth CreateAuth([FromBody] Auth authRequest)
         {
             var request = authRequest as Auth;
 
@@ -27,20 +28,21 @@ namespace KeyVault.Controllers
                 throw new NullReferenceException("Request of invalid type");
             }
 
-            request.PartitionKey = SHA1.Create(request.Tenant.ToString()).ToString();
-            request.RowKey = SHA1.Create(request.UserId.ToString()).ToString();
+            request.PartitionKey = ToKey(request.Tenant);
+            request.RowKey = ToKey(request.UserId);
 
-            authRequest.Permissions = new List<Permissions>();
+            var exists = GetObject<Auth>("auth", request.PartitionKey, request.RowKey);
 
-            var admin = new Permissions()
+            var perms = request.Permissions;
+            request.Permissions = new List<Permissions>();
+
+            foreach (var perm in perms)
             {
-                Description = "Admin",
-                PermissionId = Guid.NewGuid()
-            };
+                request.Permissions.Add(GetObject<Permissions>("permission", ToKey(perm.TenantId),
+                    ToKey(perm.PermissionId)));
+            }
 
-            authRequest.Permissions.Add(admin);
-
-            return request;
+            return SetObject("auth", request);
         }
 
         private CloudTable GetTable(string table)
@@ -53,24 +55,31 @@ namespace KeyVault.Controllers
             return client;
         }
 
-        private T GetObject<T>(string table, string partition, string row) where T : class
+        private T GetObject<T>(string table, string partition, string row) where T : class, ITableEntity
         {
-            return GetTable(table).Execute(TableOperation.Retrieve(partition, row)).Result as T;
+            return GetTable(table).Execute(TableOperation.Retrieve<T>(partition, row)).Result as T;
         }
 
-        private void SetObject<T>(string table, T obj) where T : ITableEntity
+        private T SetObject<T>(string table, T obj) where T : class, ITableEntity
         {
-            GetTable(table).Execute(TableOperation.InsertOrReplace(obj));
+            return GetTable(table).Execute(TableOperation.InsertOrReplace(obj)).Result as T;
         }
 
         private string ToKey(Guid t)
         {
-            return SHA1.Create(t.ToString()).ToString();
+            var hash = SHA1.Create().ComputeHash(Encoding.UTF8.GetBytes(t.ToString()));
+            var sb = new StringBuilder();
+            foreach (var b in hash)
+            {
+                sb.Append(b.ToString("X2"));
+            }
+
+            return sb.ToString();
         }
 
         [Route("permission/create")]
         [HttpPut]
-        public void CreatePermission([FromBody] IPermissions permission)
+        public void CreatePermission([FromBody] Permissions permission)
         {
             var perm = permission as Permissions;
 
@@ -81,6 +90,9 @@ namespace KeyVault.Controllers
 
             var existing = GetObject<Permissions>("permission", ToKey(permission.TenantId),
                 ToKey(permission.PermissionId));
+
+            perm.PartitionKey = ToKey(perm.TenantId);
+            perm.RowKey = ToKey(perm.PermissionId);
 
             if (existing != null && existing.Description != perm.Description)
             {
