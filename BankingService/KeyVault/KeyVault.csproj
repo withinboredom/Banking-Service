@@ -81,6 +81,7 @@
     </Compile>
     <Compile Include="Models\Auth\Auth.cs" />
     <Compile Include="Models\Auth\IAuth.cs" />
+    <Compile Include="Models\Auth\IPermissions.cs" />
     <Compile Include="Models\Auth\Permissions.cs" />
     <Compile Include="Models\Key\KeyRequest.cs" />
     <Compile Include="Models\Key\KeyValue.cs" />

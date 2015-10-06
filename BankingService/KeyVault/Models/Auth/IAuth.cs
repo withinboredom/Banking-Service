@@ -7,6 +7,7 @@ namespace KeyVault.Models.Auth
     {
         List<Permissions> Permissions { get; set; }
         Guid UserId { get; set; }
+        Guid Tenant { get; set; }
         string Username { get; set; }
     }
 }
