@@ -9,3 +9,5 @@ Swashbuckle
 Swashbuckle.Core
 System.IdentityModel.Tokens.Jwt
 WebActivatorEx
+WindowsAzure.Storage
+Microsoft.WindowsAzure.ConfigurationManager
