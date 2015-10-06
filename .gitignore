@@ -198,3 +198,6 @@ FakesAssemblies/
 # Development transforms
 App.*.config
 Web.config
+
+#paket
+paket.exe

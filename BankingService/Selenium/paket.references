@@ -1,0 +1,11 @@
+Microsoft.Azure.KeyVault.Core
+Microsoft.Azure.WebJobs
+Microsoft.Azure.WebJobs.Core
+Microsoft.Data.Edm
+Microsoft.Data.OData
+Microsoft.Data.Services.Client
+Microsoft.Web.WebJobs.Publish
+Microsoft.WindowsAzure.ConfigurationManager
+Newtonsoft.Json
+System.Spatial
+WindowsAzure.Storage
