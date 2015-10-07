@@ -1,5 +1,6 @@
 ﻿using System;
 using KeyVault.Controllers;
+using KeyVault.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace KeyVaultTests
@@ -11,6 +12,10 @@ namespace KeyVaultTests
         public void TestCreateSecret()
         {
             var controller = new SecretController();
+            var result = controller.CreateSecret("secretTest",
+                new Secret() {ContentType = "string", Id = Guid.Empty, Value = "value"});
+
+            Assert.AreEqual("secretTest", result.Name);
         }
     }
 }
