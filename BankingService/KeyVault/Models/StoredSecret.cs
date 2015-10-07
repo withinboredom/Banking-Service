@@ -21,14 +21,18 @@ namespace KeyVault.Models
         {
             ContentType = secret.ContentType;
             Id = secret.Id;
+            if (Id == Guid.Empty)
+            {
+                Id = Guid.NewGuid();
+            }
             Value = secret.Value;
-            PartitionKey = Cloud.ToKey(secret.Id);
-            RowKey = Cloud.ToKey(secret.Name);
+            PartitionKey = Cloud.ToKey(secret.Name);
+            RowKey = secret.Version.ToString();
         }
 
-        public static StoredSecret FromTable(CloudTable table, Guid id, string name)
+        public static StoredSecret FromTable(CloudTable table, string name, int version)
         {
-            return Cloud.GetObject<StoredSecret>(table, Cloud.ToKey(id), Cloud.ToKey(name));
+            return Cloud.GetObject<StoredSecret>(table, Cloud.ToKey(name), version.ToString());
         }
     }
 }
