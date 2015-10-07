@@ -9,6 +9,7 @@ namespace KeyVault.Models
     {
         public string Value { get; set; }
         public string Name { get; set; }
+        public int Version { get; set; }
         public string ContentType { get; set; }
         public Guid Id { get; set; }
 

@@ -22,12 +22,17 @@ namespace KeyVault.Controllers
             var store = new StoredSecret(secret);
 
             var table = Cloud.GetTable("secrets", CloudConfigurationManager.GetSetting("Auth:Storage"));
+
+            var exists = Cloud.GetObject<StoredSecret>(table, store.PartitionKey);
+
+            store.Version = exists.Count();
+
             return new Secret(Cloud.SetObject(table, store));
         }
 
-        [Route("{secretName}/{id}")]
+        [Route("{secretName}/{version}")]
         [HttpGet]
-        public Secret GetSecret([FromUri] string secretName, [FromUri] Guid id)
+        public Secret GetSecret([FromUri] string secretName, [FromUri] int? version = null)
         {
             var table = Cloud.GetTable("secrets", CloudConfigurationManager.GetSetting("Auth:Storage"));
             return new Secret(StoredSecret.FromTable(table, id, secretName));
