@@ -11,6 +11,10 @@ namespace Utility
 {
     public static class Cloud
     {
+        public static void GetConfigurationKey(bool debug)
+        {
+        }
+
         /// <summary>
         /// Gets a table
         /// </summary>

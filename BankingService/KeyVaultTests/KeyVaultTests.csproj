@@ -64,6 +64,10 @@
       <Project>{3c30f43d-ee63-45b0-ac2c-f032df052f86}</Project>
       <Name>KeyVault</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{00f06fc4-6887-41b1-91d1-4ba92127ecdc}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="paket.references" />
