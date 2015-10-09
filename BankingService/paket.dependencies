@@ -17,6 +17,7 @@ nuget Microsoft.Data.Services.Client 5.6.4
 nuget Microsoft.Web.Infrastructure 1.0.0.0 framework: >= net46
 nuget Microsoft.Web.WebJobs.Publish 1.0.7
 nuget Microsoft.WindowsAzure.ConfigurationManager 3.1.0
+nuget moq
 nuget Newtonsoft.Json 7.0.1 framework: >= net46
 nuget Selenium.Support 2.47.0
 nuget Selenium.WebDriver 2.47.0
