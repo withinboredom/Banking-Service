@@ -4,7 +4,6 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Azure;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 
@@ -12,6 +11,10 @@ namespace Utility
 {
     public static class Cloud
     {
+        public static void GetConfigurationKey(bool debug)
+        {
+        }
+
         /// <summary>
         /// Gets a table
         /// </summary>
