@@ -2,6 +2,7 @@
 using System.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SecretsLibrary;
+using Testing;
 using Utility;
 
 namespace KeyVaultTests
@@ -9,6 +10,24 @@ namespace KeyVaultTests
     [TestClass]
     public class TestSecret
     {
+        [TestInitialize]
+        public void Startup()
+        {
+            if (!AzureStorageEmulatorManager.IsProcessStarted())
+            {
+                AzureStorageEmulatorManager.StartStorageEmulator();
+            }
+        }
+
+        [TestCleanup]
+        public void Shutdown()
+        {
+            if (AzureStorageEmulatorManager.IsProcessStarted())
+            {
+                AzureStorageEmulatorManager.StopStorageEmulator();
+            }
+        }
+
         private SecretManager createManager()
         {
             var reader = new AppSettingsReader();

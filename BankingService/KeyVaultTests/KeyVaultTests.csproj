@@ -71,6 +71,10 @@
       <Project>{f3952029-ddc3-4325-9165-66dd23a37b21}</Project>
       <Name>SecretsLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Testing\Testing.csproj">
+      <Project>{05405efb-e70d-4eda-8a12-e00ea43af0b3}</Project>
+      <Name>Testing</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Utility\Utility.csproj">
       <Project>{00F06FC4-6887-41B1-91D1-4BA92127ECDC}</Project>
       <Name>Utility</Name>
