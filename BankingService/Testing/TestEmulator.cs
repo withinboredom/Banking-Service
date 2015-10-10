@@ -8,9 +8,9 @@ namespace Testing
     // Credits to David Peden http://stackoverflow.com/users/607701/david-peden for sharing this!
     public static class AzureStorageEmulatorManager
     {
-        private const string WindowsAzureStorageEmulatorPath = @"C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator\WAStorageEmulator.exe";
-        private const string Win7ProcessName = "WAStorageEmulator";
-        private const string Win8ProcessName = "WASTOR~1";
+        private const string WindowsAzureStorageEmulatorPath = @"C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator\AzureStorageEmulator.exe";
+        private const string Win7ProcessName = "AzureStorageEmulator";
+        private const string Win8ProcessName = "AZURES~1";
 
         private static readonly ProcessStartInfo startStorageEmulator = new ProcessStartInfo
         {
@@ -36,12 +36,10 @@ namespace Testing
 
         public static void StartStorageEmulator()
         {
-            if (!IsProcessStarted())
+            if (IsProcessStarted()) return;
+            using (var process = Process.Start(startStorageEmulator))
             {
-                using (Process process = Process.Start(startStorageEmulator))
-                {
-                    process.WaitForExit();
-                }
+                process.WaitForExit();
             }
         }
 
