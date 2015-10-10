@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection.Emit;
 using Interfaces.Secrets;
 using Microsoft.WindowsAzure.Storage.Table;
 using Utility;
@@ -12,7 +13,7 @@ namespace SecretsLibrary
         public string Value { get; set; }
         public string Name { get; set; }
         public int Version { get; set; }
-
+        
         public StoredSecret() { }
 
         public StoredSecret(ISecret secret)
@@ -24,8 +25,10 @@ namespace SecretsLibrary
                 Id = Guid.NewGuid();
             }
             Value = secret.Value;
-            PartitionKey = Cloud.GetCoud().ToKey(secret.Name);
-            RowKey = secret.Version.ToString();
+            Name = secret.Name;
+            Version = secret.Version;
+            PartitionKey = Cloud.GetCoud().ToKey(Name);
+            RowKey = PartitionKey + ":" + Version.ToString();
         }
 
         public static StoredSecret FromTable(CloudTable table, string name, int version)

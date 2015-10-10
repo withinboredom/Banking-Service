@@ -28,7 +28,9 @@ namespace SecretsLibrary
             var table = _cloud.GetTable("secrets", _connectionString);
             var exists = _cloud.GetObject<StoredSecret>(table, store.PartitionKey);
             
-            store.Version = exists.Count();
+            store.Version = exists.Count() + 1;
+
+            store = new StoredSecret(store);
 
             return _cloud.SetObject(table, store);
         }
