@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KeyVault.Models
+namespace Interfaces.Secrets
 {
     public interface ISecret
     {

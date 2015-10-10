@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 using Interfaces;
+using Interfaces.Banking;
 using Microsoft.WindowsAzure.Storage.Table;
 
 namespace DataLibrary.DataConstructs

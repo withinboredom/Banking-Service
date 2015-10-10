@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using Interfaces.Secrets;
 using Microsoft.WindowsAzure.Storage.Table;
 using Utility;
 
-namespace KeyVault.Models
+namespace SecretsLibrary
 {
     public class StoredSecret : TableEntity, ISecret
     {

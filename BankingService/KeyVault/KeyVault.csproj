@@ -78,9 +78,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ISecret.cs" />
-    <Compile Include="Models\Secret.cs" />
-    <Compile Include="Models\StoredSecret.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +90,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{da4f69b9-912d-4411-b016-c836f3d7f498}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SecretsLibrary\SecretsLibrary.csproj">
+      <Project>{f3952029-ddc3-4325-9165-66dd23a37b21}</Project>
+      <Name>SecretsLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Utility\Utility.csproj">
       <Project>{00f06fc4-6887-41b1-91d1-4ba92127ecdc}</Project>
       <Name>Utility</Name>

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using KeyVault.Models;
 using Microsoft.Azure;
 using Microsoft.WindowsAzure.Storage.Table;
+using SecretsLibrary;
 using Utility;
 
 namespace KeyVault.Controllers

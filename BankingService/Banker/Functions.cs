@@ -3,6 +3,7 @@ using System.IO;
 using BankLibrary.Banks;
 using DataLibrary.DataConstructs;
 using Interfaces;
+using Interfaces.Banking;
 using Microsoft.Azure.WebJobs;
 using Microsoft.ServiceBus.Messaging;
 
