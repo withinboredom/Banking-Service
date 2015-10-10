@@ -89,6 +89,7 @@
   -->
   <Import Project="..\.paket\paket.targets" />
   <Import Project="$(SlowCheetahTargets)" Condition="Exists('$(SlowCheetahTargets)')" Label="SlowCheetah" />
+  <Import Project="..\packages\Microsoft.Web.WebJobs.Publish\tools\webjobs.targets" Condition="Exists('..\packages\Microsoft.Web.WebJobs.Publish\tools\webjobs.targets')" />
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5' Or $(TargetFrameworkVersion) == 'v4.5.1' Or $(TargetFrameworkVersion) == 'v4.5.2' Or $(TargetFrameworkVersion) == 'v4.5.3' Or $(TargetFrameworkVersion) == 'v4.6')">
       <ItemGroup>
@@ -355,5 +356,4 @@
       </ItemGroup>
     </When>
   </Choose>
-  <Import Project="..\packages\Microsoft.Web.WebJobs.Publish\tools\webjobs.targets" Condition="Exists('..\packages\Microsoft.Web.WebJobs.Publish\tools\webjobs.targets')" />
 </Project>

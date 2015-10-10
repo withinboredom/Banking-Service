@@ -138,7 +138,6 @@
     <PreBuildEvent>
     </PreBuildEvent>
   </PropertyGroup>
-  <Import Project="..\packages\Microsoft.Web.WebJobs.Publish.1.0.5\tools\webjobs.targets" Condition="Exists('..\packages\Microsoft.Web.WebJobs.Publish.1.0.5\tools\webjobs.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
@@ -147,6 +146,11 @@
   </Target>
   -->
   <Import Project="..\.paket\paket.targets" />
+  <Import Project="..\packages\Microsoft.Web.WebJobs.Publish\tools\webjobs.targets" Condition="Exists('..\packages\Microsoft.Web.WebJobs.Publish\tools\webjobs.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6'">
       <ItemGroup>
@@ -517,10 +521,4 @@
       </ItemGroup>
     </When>
   </Choose>
-  <Import Project="..\packages\Microsoft.Web.WebJobs.Publish\tools\webjobs.targets" Condition="Exists('..\packages\Microsoft.Web.WebJobs.Publish\tools\webjobs.targets')" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
-  <Import Project="..\packages\Microsoft.Web.WebJobs.Publish\tools\webjobs.targets" Condition="Exists('..\packages\Microsoft.Web.WebJobs.Publish\tools\webjobs.targets')" />
 </Project>
