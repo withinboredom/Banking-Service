@@ -126,6 +126,7 @@ namespace BankLibrary.Banks
             }
             catch (Exception ex)
             {
+                ex.ToString();
                 LoginFailed?.Invoke();
             }
         }

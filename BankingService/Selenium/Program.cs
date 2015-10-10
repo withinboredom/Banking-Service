@@ -28,6 +28,7 @@ namespace Selenium
             catch (Exception ex)
             {
                 Console.WriteLine("Failed to connect to storage --- assuming development?");
+                Console.WriteLine(ex.Message);
             }
 
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
@@ -49,7 +50,7 @@ namespace Selenium
                 var proc = Process.Start(process);
                 wait(proc);
             }
-            catch (Exception ex)
+            catch
             {
                 try
                 {
@@ -58,7 +59,7 @@ namespace Selenium
                 }
                 catch (Exception e)
                 {
-                    throw new Exception("Failed to start selenium");
+                    throw new Exception("Failed to start selenium" + e.Message);
                 }
             }
         }

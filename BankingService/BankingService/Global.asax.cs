@@ -9,8 +9,14 @@ using System.Web.Routing;
 
 namespace BankingService
 {
+    /// <summary>
+    /// The application
+    /// </summary>
     public class WebApiApplication : System.Web.HttpApplication
     {
+        /// <summary>
+        /// Start
+        /// </summary>
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);

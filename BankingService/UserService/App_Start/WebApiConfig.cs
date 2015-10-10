@@ -5,8 +5,15 @@ using System.Web.Http;
 
 namespace UserService
 {
+    /// <summary>
+    /// The config
+    /// </summary>
     public static class WebApiConfig
     {
+        /// <summary>
+        /// Register
+        /// </summary>
+        /// <param name="config"></param>
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
