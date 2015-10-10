@@ -1,6 +1,6 @@
 ﻿using System;
-using KeyVault.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SecretsLibrary;
 
 namespace KeyVaultTests
 {
@@ -10,7 +10,7 @@ namespace KeyVaultTests
         [TestMethod]
         public void TestCreateSecret()
         {
-            
+            var manager = new SecretManager("nothing");
         }
     }
 }

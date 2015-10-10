@@ -18,7 +18,7 @@ namespace KeyVault.Controllers
         [HttpPut]
         public Secret CreateSecret([FromUri] string secretName, [FromBody] Secret secret)
         {
-            var manager = new SecretManager(CloudConfigurationManager.GetSetting("Auth:Storage"));
+            var manager = new SecretManager(CloudConfigurationManager.GetSetting("Auth:Storage"), Cloud.GetCoud());
             return new Secret(manager.CreateSecret(secretName, secret));
         }
 
