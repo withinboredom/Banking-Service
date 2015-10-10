@@ -519,7 +519,7 @@
   </Choose>
   <Import Project="..\packages\Microsoft.Web.WebJobs.Publish\tools\webjobs.targets" Condition="Exists('..\packages\Microsoft.Web.WebJobs.Publish\tools\webjobs.targets')" />
   <PropertyGroup>
-    <PostBuildEvent>mkdir "$(ProjectDir)App_Data\jobs\continuous\Banker" "$(ProjectDir)App_Data\jobs\continuous\Banker"
-copy "$(SolutionDir)Banker\bin\$(ConfigurationName)\*.*" "$(ProjectDir)App_Data\jobs\continuous\Banker"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>
