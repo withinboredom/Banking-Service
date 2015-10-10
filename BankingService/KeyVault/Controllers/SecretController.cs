@@ -26,11 +26,11 @@ namespace KeyVault.Controllers
         [HttpGet]
         public Secret GetSecret([FromUri] string secretName, [FromUri] int? version = null)
         {
-            var table = Cloud.GetTable("secrets", CloudConfigurationManager.GetSetting("Auth:Storage"));
+            var table = Cloud.GetCoud().GetTable("secrets", CloudConfigurationManager.GetSetting("Auth:Storage"));
 
             if (version.HasValue) return new Secret(StoredSecret.FromTable(table, secretName, version.Value));
 
-            var exists = Cloud.GetObject<StoredSecret>(table, Cloud.ToKey(secretName));
+            var exists = Cloud.GetCoud().GetObject<StoredSecret>(table, Cloud.GetCoud().ToKey(secretName));
             version = exists.Count();
 
             return new Secret(StoredSecret.FromTable(table, secretName, version.Value));
@@ -40,9 +40,9 @@ namespace KeyVault.Controllers
         [HttpDelete]
         public void DeleteSecret([FromUri] string secretName)
         {
-            var table = Cloud.GetTable("secrets", CloudConfigurationManager.GetSetting("Auth:Storage"));
+            var table = Cloud.GetCoud().GetTable("secrets", CloudConfigurationManager.GetSetting("Auth:Storage"));
 
-            var exists = Cloud.GetObject<StoredSecret>(table, Cloud.ToKey(secretName));
+            var exists = Cloud.GetCoud().GetObject<StoredSecret>(table, Cloud.GetCoud().ToKey(secretName));
 
             foreach (var secretVersion in exists)
             {

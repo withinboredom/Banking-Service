@@ -24,13 +24,13 @@ namespace SecretsLibrary
                 Id = Guid.NewGuid();
             }
             Value = secret.Value;
-            PartitionKey = Cloud.ToKey(secret.Name);
+            PartitionKey = Cloud.GetCoud().ToKey(secret.Name);
             RowKey = secret.Version.ToString();
         }
 
         public static StoredSecret FromTable(CloudTable table, string name, int version)
         {
-            return Cloud.GetObject<StoredSecret>(table, Cloud.ToKey(name), version.ToString());
+            return Cloud.GetCoud().GetObject<StoredSecret>(table, Cloud.GetCoud().ToKey(name), version.ToString());
         }
     }
 }

@@ -27,7 +27,7 @@ namespace SecretsLibrary
             
             store.Version = exists.Count();
 
-            return new Secret(Cloud.GetCoud().SetObject(table, store));
+            return Cloud.GetCoud().SetObject(table, store);
         }
     }
 }
