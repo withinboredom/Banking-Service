@@ -355,4 +355,5 @@
       </ItemGroup>
     </When>
   </Choose>
+  <Import Project="..\packages\Microsoft.Web.WebJobs.Publish\tools\webjobs.targets" Condition="Exists('..\packages\Microsoft.Web.WebJobs.Publish\tools\webjobs.targets')" />
 </Project>
