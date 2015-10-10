@@ -11,11 +11,7 @@ namespace KeyVaultTests
         [TestMethod]
         public void TestCreateSecret()
         {
-            var controller = new SecretController();
-            var result = controller.CreateSecret("secretTest",
-                new Secret() {ContentType = "string", Id = Guid.Empty, Value = "value"});
-
-            Assert.AreEqual("secretTest", result.Name);
+            
         }
     }
 }
