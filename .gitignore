@@ -200,3 +200,5 @@ App.*.config
 
 #paket
 paket.exe
+
+App_Data/

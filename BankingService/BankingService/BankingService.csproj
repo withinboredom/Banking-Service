@@ -135,7 +135,8 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PreBuildEvent>ECHO F | XCOPY /D /Y "$(ProjectDir)Web.example.config" "$(ProjectDir)Web.config"</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\Microsoft.Web.WebJobs.Publish.1.0.5\tools\webjobs.targets" Condition="Exists('..\packages\Microsoft.Web.WebJobs.Publish.1.0.5\tools\webjobs.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -517,4 +518,8 @@
     </When>
   </Choose>
   <Import Project="..\packages\Microsoft.Web.WebJobs.Publish\tools\webjobs.targets" Condition="Exists('..\packages\Microsoft.Web.WebJobs.Publish\tools\webjobs.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>mkdir "$(ProjectDir)App_Data\jobs\continuous\Banker" "$(ProjectDir)App_Data\jobs\continuous\Banker"
+copy "$(SolutionDir)Banker\bin\$(ConfigurationName)\*.*" "$(ProjectDir)App_Data\jobs\continuous\Banker"</PostBuildEvent>
+  </PropertyGroup>
 </Project>
