@@ -36,7 +36,7 @@ namespace KeyVault.Controllers
             return new Secret(StoredSecret.FromTable(table, secretName, version.Value));
         }
 
-        [Route("{secretName:alpha")]
+        [Route("{secretName:alpha}")]
         [HttpDelete]
         public void DeleteSecret([FromUri] string secretName)
         {
