@@ -1,5 +1,6 @@
 ﻿using System;
 using Interfaces;
+using Interfaces.Banking;
 
 namespace DataLibrary.DataConstructs
 {

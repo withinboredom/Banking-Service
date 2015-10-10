@@ -41,10 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IBankDriver.cs" />
-    <Compile Include="ICredentials.cs" />
-    <Compile Include="IStepDefinition.cs" />
+    <Compile Include="Banking\IBankDriver.cs" />
+    <Compile Include="Banking\ICredentials.cs" />
+    <Compile Include="Banking\IStepDefinition.cs" />
+    <Compile Include="ICloud.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Secrets\ISecret.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="paket.references" />

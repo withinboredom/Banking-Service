@@ -4,9 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using KeyVault.Models;
 using Microsoft.Azure;
 using Microsoft.WindowsAzure.Storage.Table;
+using SecretsLibrary;
 using Utility;
 
 namespace KeyVault.Controllers
@@ -18,28 +18,19 @@ namespace KeyVault.Controllers
         [HttpPut]
         public Secret CreateSecret([FromUri] string secretName, [FromBody] Secret secret)
         {
-            secret.Name = secretName;
-
-            var store = new StoredSecret(secret);
-
-            var table = Cloud.GetTable("secrets", CloudConfigurationManager.GetSetting("Auth:Storage"));
-
-            var exists = Cloud.GetObject<StoredSecret>(table, store.PartitionKey);
-
-            store.Version = exists.Count();
-
-            return new Secret(Cloud.SetObject(table, store));
+            var manager = new SecretManager(CloudConfigurationManager.GetSetting("Auth:Storage"), Cloud.GetCoud());
+            return new Secret(manager.CreateSecret(secretName, secret));
         }
 
         [Route("{secretName:alpha}/{version:int?}")]
         [HttpGet]
         public Secret GetSecret([FromUri] string secretName, [FromUri] int? version = null)
         {
-            var table = Cloud.GetTable("secrets", CloudConfigurationManager.GetSetting("Auth:Storage"));
+            var table = Cloud.GetCoud().GetTable("secrets", CloudConfigurationManager.GetSetting("Auth:Storage"));
 
             if (version.HasValue) return new Secret(StoredSecret.FromTable(table, secretName, version.Value));
 
-            var exists = Cloud.GetObject<StoredSecret>(table, Cloud.ToKey(secretName));
+            var exists = Cloud.GetCoud().GetObject<StoredSecret>(table, Cloud.GetCoud().ToKey(secretName));
             version = exists.Count();
 
             return new Secret(StoredSecret.FromTable(table, secretName, version.Value));
@@ -49,9 +40,9 @@ namespace KeyVault.Controllers
         [HttpDelete]
         public void DeleteSecret([FromUri] string secretName)
         {
-            var table = Cloud.GetTable("secrets", CloudConfigurationManager.GetSetting("Auth:Storage"));
+            var table = Cloud.GetCoud().GetTable("secrets", CloudConfigurationManager.GetSetting("Auth:Storage"));
 
-            var exists = Cloud.GetObject<StoredSecret>(table, Cloud.ToKey(secretName));
+            var exists = Cloud.GetCoud().GetObject<StoredSecret>(table, Cloud.GetCoud().ToKey(secretName));
 
             foreach (var secretVersion in exists)
             {

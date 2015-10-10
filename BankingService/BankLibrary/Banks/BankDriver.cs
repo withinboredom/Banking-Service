@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using DataLibrary.DataConstructs;
 using Interfaces;
+using Interfaces.Banking;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.PhantomJS;

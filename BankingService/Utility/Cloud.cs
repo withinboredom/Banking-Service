@@ -4,20 +4,44 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Interfaces;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 
 namespace Utility
 {
-    public static class Cloud
+    public class Cloud : ICloud
     {
+        private static Cloud _cloud;
+        private static object _lock = new object();
+
+        /// <summary>
+        /// Gets a cloud
+        /// </summary>
+        /// <returns></returns>
+        public static Cloud GetCoud()
+        {
+            if (_cloud == null)
+            {
+                lock (_lock)
+                {
+                    if (_cloud == null)
+                    {
+                        _cloud = new Cloud();
+                    }
+                }
+            }
+
+            return _cloud;
+        }
+
         /// <summary>
         /// Gets a table
         /// </summary>
         /// <param name="table">The table name to get</param>
         /// <param name="connectionString">The connection</param>
         /// <returns>A Cloud Table</returns>
-        public static CloudTable GetTable(string table, string connectionString)
+        public CloudTable GetTable(string table, string connectionString)
         {
             var storage = CloudStorageAccount.Parse(connectionString);
             var client = storage.CreateCloudTableClient().GetTableReference(table);
@@ -33,7 +57,7 @@ namespace Utility
         /// <param name="partition">The partition key to get</param>
         /// <param name="row">The row key to get</param>
         /// <returns>An object from the database</returns>
-        public static T GetObject<T>(CloudTable table, string partition, string row) where T : class, ITableEntity
+        public T GetObject<T>(CloudTable table, string partition, string row) where T : class, ITableEntity
         {
             return table.Execute(TableOperation.Retrieve<T>(partition, row)).Result as T;
         }
@@ -46,7 +70,7 @@ namespace Utility
         /// <param name="partition">The partition key to get</param>
         /// <param name="row">The row key to get</param>
         /// <returns>An object from the database</returns>
-        public static T GetObject<T>(CloudTable table, Guid partition, Guid row) where T : class, ITableEntity
+        public T GetObject<T>(CloudTable table, Guid partition, Guid row) where T : class, ITableEntity
         {
             return GetObject<T>(table, ToKey(partition), ToKey(row));
         }
@@ -60,7 +84,7 @@ namespace Utility
         /// <param name="partition">The partition to get from</param>
         /// <param name="token">A continuation token</param>
         /// <returns></returns>
-        private static TableQuerySegment<T> GetSegmentEntities<T>(CloudTable table, int pageSize, string partition,
+        private TableQuerySegment<T> GetSegmentEntities<T>(CloudTable table, int pageSize, string partition,
             TableContinuationToken token) where T : class, ITableEntity, new()
         {
             var query =
@@ -77,7 +101,7 @@ namespace Utility
         /// <param name="table">The table to search in</param>
         /// <param name="partition">The partition key to get</param>
         /// <returns></returns>
-        public static IEnumerable<T> GetObject<T>(CloudTable table, string partition) where T : class, ITableEntity, new()
+        public IEnumerable<T> GetObject<T>(CloudTable table, string partition) where T : class, ITableEntity, new()
         {
             var result = GetSegmentEntities<T>(table, 100, partition, null);
             while (result.Results.Count > 0)
@@ -104,7 +128,7 @@ namespace Utility
         /// <param name="table">The table to set</param>
         /// <param name="obj">The object to save</param>
         /// <returns>The saved object</returns>
-        public static T SetObject<T>(CloudTable table, T obj) where T : class, ITableEntity
+        public T SetObject<T>(CloudTable table, T obj) where T : class, ITableEntity
         {
             return table.Execute(TableOperation.InsertOrReplace(obj)).Result as T;
         }
@@ -114,7 +138,7 @@ namespace Utility
         /// </summary>
         /// <param name="id">The id to convert to SHA1</param>
         /// <returns>The SHA1</returns>
-        public static string ToKey(Guid id)
+        public string ToKey(Guid id)
         {
             return ToKey(id.ToString());
         }
@@ -124,7 +148,7 @@ namespace Utility
         /// </summary>
         /// <param name="id">The string to convert</param>
         /// <returns>The SHA1</returns>
-        public static string ToKey(string id)
+        public string ToKey(string id)
         {
             var hash = SHA1.Create().ComputeHash(Encoding.UTF8.GetBytes(id));
             var sb = new StringBuilder();

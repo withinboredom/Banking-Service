@@ -1,6 +1,7 @@
 ﻿using System;
 using DataLibrary.DataConstructs;
 using Interfaces;
+using Interfaces.Banking;
 using Microsoft.ServiceBus.Messaging;
 
 namespace InfrastructureLibrary.Banks

@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/e1q76okjaibbn74l?svg=true)](https://ci.appveyor.com/project/withinboredom/banking-service)
+
 # Banking-Service
 A Banking Service for Azure API's
 

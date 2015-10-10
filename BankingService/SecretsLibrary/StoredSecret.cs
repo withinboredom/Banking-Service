@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Reflection.Emit;
+using Interfaces.Secrets;
 using Microsoft.WindowsAzure.Storage.Table;
 using Utility;
 
-namespace KeyVault.Models
+namespace SecretsLibrary
 {
     public class StoredSecret : TableEntity, ISecret
     {
@@ -14,7 +13,7 @@ namespace KeyVault.Models
         public string Value { get; set; }
         public string Name { get; set; }
         public int Version { get; set; }
-
+        
         public StoredSecret() { }
 
         public StoredSecret(ISecret secret)
@@ -26,13 +25,15 @@ namespace KeyVault.Models
                 Id = Guid.NewGuid();
             }
             Value = secret.Value;
-            PartitionKey = Cloud.ToKey(secret.Name);
-            RowKey = secret.Version.ToString();
+            Name = secret.Name;
+            Version = secret.Version;
+            PartitionKey = Cloud.GetCoud().ToKey(Name);
+            RowKey = PartitionKey + ":" + Version.ToString();
         }
 
         public static StoredSecret FromTable(CloudTable table, string name, int version)
         {
-            return Cloud.GetObject<StoredSecret>(table, Cloud.ToKey(name), version.ToString());
+            return Cloud.GetCoud().GetObject<StoredSecret>(table, Cloud.GetCoud().ToKey(name), version.ToString());
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Interfaces
+namespace Interfaces.Banking
 {
     public interface ICredentials
     {
