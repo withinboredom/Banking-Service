@@ -18,17 +18,8 @@ namespace KeyVault.Controllers
         [HttpPut]
         public Secret CreateSecret([FromUri] string secretName, [FromBody] Secret secret)
         {
-            secret.Name = secretName;
-
-            var store = new StoredSecret(secret);
-
-            var table = Cloud.GetTable("secrets", CloudConfigurationManager.GetSetting("Auth:Storage"));
-
-            var exists = Cloud.GetObject<StoredSecret>(table, store.PartitionKey);
-
-            store.Version = exists.Count();
-
-            return new Secret(Cloud.SetObject(table, store));
+            var manager = new SecretManager(CloudConfigurationManager.GetSetting("Auth:Storage"));
+            return new Secret(manager.CreateSecret(secretName, secret));
         }
 
         [Route("{secretName:alpha}/{version:int?}")]
