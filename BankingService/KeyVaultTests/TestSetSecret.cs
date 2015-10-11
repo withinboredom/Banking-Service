@@ -53,5 +53,7 @@ namespace KeyVaultTests
             var ending = manager.CreateSecret("test", new Secret() {ContentType = "text", Value = "wee"});
             Assert.AreEqual(beginning.Version + 1, ending.Version);
         }
+
+
     }
 }

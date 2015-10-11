@@ -13,6 +13,7 @@ namespace SecretsLibrary
     {
         private readonly string _connectionString;
         private readonly ICloud _cloud;
+        private const string Table = "secrets";
 
         public SecretManager(string connectionString, ICloud cloud)
         {
@@ -25,7 +26,7 @@ namespace SecretsLibrary
             secret.Name = secretName;
 
             var store = new StoredSecret(secret);
-            var table = _cloud.GetTable("secrets", _connectionString);
+            var table = _cloud.GetTable(Table, _connectionString);
             var exists = _cloud.GetObject<StoredSecret>(table, store.PartitionKey);
             
             store.Version = exists.Count() + 1;
@@ -33,6 +34,12 @@ namespace SecretsLibrary
             store = new StoredSecret(store);
 
             return _cloud.SetObject(table, store);
+        }
+
+        public ISecret GetSecret(string secretName, int? version)
+        {
+            var table = _cloud.GetTable(Table, _connectionString);
+            return new Secret(StoredSecret.FromTable(table, secretName, version));
         }
     }
 }

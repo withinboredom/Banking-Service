@@ -26,14 +26,8 @@ namespace KeyVault.Controllers
         [HttpGet]
         public Secret GetSecret([FromUri] string secretName, [FromUri] int? version = null)
         {
-            var table = Cloud.GetCoud().GetTable("secrets", CloudConfigurationManager.GetSetting("Auth:Storage"));
-
-            if (version.HasValue) return new Secret(StoredSecret.FromTable(table, secretName, version.Value));
-
-            var exists = Cloud.GetCoud().GetObject<StoredSecret>(table, Cloud.GetCoud().ToKey(secretName));
-            version = exists.Count();
-
-            return new Secret(StoredSecret.FromTable(table, secretName, version.Value));
+            var manager = new SecretManager(CloudConfigurationManager.GetSetting("Auth:Storage"), Cloud.GetCoud());
+            return new Secret(manager.GetSecret(secretName, version));
         }
 
         [Route("{secretName:alpha}")]
