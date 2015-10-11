@@ -41,5 +41,10 @@ namespace SecretsLibrary
             var table = _cloud.GetTable(Table, _connectionString);
             return new Secret(StoredSecret.FromTable(table, secretName, version));
         }
+
+        public ISecret GetSecret(string secretName)
+        {
+            return GetSecret(secretName, null);
+        }
     }
 }

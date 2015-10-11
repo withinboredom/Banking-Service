@@ -40,7 +40,9 @@ namespace SecretsLibrary
                 version = exists.Count();
             }
 
-            return Cloud.GetCoud().GetObject<StoredSecret>(table, Cloud.GetCoud().ToKey(name), version.ToString());
+            var reader = new StoredSecret(new StoredSecret() { Name = name, Version = version.Value});
+
+            return Cloud.GetCoud().GetObject<StoredSecret>(table, reader.PartitionKey, reader.RowKey);
         }
     }
 }
