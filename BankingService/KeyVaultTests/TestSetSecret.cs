@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SecretsLibrary;
 using Testing;
@@ -25,6 +26,7 @@ namespace KeyVaultTests
             if (AzureStorageEmulatorManager.IsProcessStarted())
             {
                 AzureStorageEmulatorManager.StopStorageEmulator();
+                Thread.Sleep(TimeSpan.FromSeconds(2));
             }
         }
 
