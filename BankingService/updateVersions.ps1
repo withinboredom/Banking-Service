@@ -11,3 +11,5 @@ function updateVersion([String] $file) {
 updateVersion(".\BankingService\apiapp.json")
 updateVersion(".\KeyVault\apiapp.json")
 updateVersion(".\UserService\apiapp.json")
+
+Write-Host "Updated to version $version"
