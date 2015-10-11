@@ -1,11 +1,5 @@
 Microsoft.AspNet.WebApi
-Microsoft.AspNet.WebApi.Client
-Microsoft.AspNet.WebApi.Core
-Microsoft.AspNet.WebApi.WebHost
 Microsoft.Azure.AppService.ApiApps.Service
-Microsoft.Web.Infrastructure
 Newtonsoft.Json
 Swashbuckle
-Swashbuckle.Core
 System.IdentityModel.Tokens.Jwt
-WebActivatorEx

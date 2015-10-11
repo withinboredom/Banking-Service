@@ -1,14 +1,3 @@
-Microsoft.Azure.KeyVault.Core
-Microsoft.Azure.WebJobs
-Microsoft.Azure.WebJobs.Core
 Microsoft.Azure.WebJobs.ServiceBus
-Microsoft.Data.Edm
-Microsoft.Data.OData
-Microsoft.Data.Services.Client
 Microsoft.Web.WebJobs.Publish
-Microsoft.WindowsAzure.ConfigurationManager
-Newtonsoft.Json
 SlowCheetah
-System.Spatial
-WindowsAzure.ServiceBus
-WindowsAzure.Storage
