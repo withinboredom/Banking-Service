@@ -146,9 +146,9 @@
   </Target>
   -->
   <Import Project="..\.paket\paket.targets" />
-  <!--
-  <Import Project="..\packages\Microsoft.Web.WebJobs.Publish\tools\webjobs.targets" Condition="Exists('..\packages\Microsoft.Web.WebJobs.Publish\tools\webjobs.targets')" />
-  -->
+  <Import
+    Project="..\packages\Microsoft.Web.WebJobs.Publish\tools\webjobs.targets"
+    Condition="Exists('..\packages\Microsoft.Web.WebJobs.Publish\tools\webjobs.targets')" />
   <PropertyGroup>
     <PostBuildEvent>
     </PostBuildEvent>
