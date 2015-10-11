@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Interfaces;
 using Interfaces.Secrets;
+using Microsoft.WindowsAzure.Storage.Table;
 using Utility;
 
 namespace SecretsLibrary
@@ -38,13 +39,23 @@ namespace SecretsLibrary
 
             var store = new StoredSecret(secret);
             var table = _cloud.GetTable(Table, _connectionString);
-            var exists = _cloud.GetObject<StoredSecret>(table, store.PartitionKey);
+            var exists = GetAllSecrets(table, store);
             
             store.Version = exists.Count() + 1;
 
             store = new StoredSecret(store);
 
             return _cloud.SetObject(table, store);
+        }
+
+        /// <summary>
+        /// Get all partition keys
+        /// </summary>
+        /// <param name="secret">Gets all the secrets</param>
+        /// <returns></returns>
+        private IEnumerable<StoredSecret> GetAllSecrets(CloudTable table, StoredSecret secret)
+        {
+            return _cloud.GetObject<StoredSecret>(table, secret.PartitionKey);
         }
 
         /// <summary>
@@ -67,6 +78,31 @@ namespace SecretsLibrary
         public ISecret GetSecret(string secretName)
         {
             return GetSecret(secretName, null);
+        }
+
+        /// <summary>
+        /// Deletes all secrets ... this is a permanent operation
+        /// </summary>
+        /// <param name="secret">The secret</param>
+        /// <returns></returns>
+        public bool DeleteSecret(ISecret secret)
+        {
+            try
+            {
+                var table = _cloud.GetTable(Table, _connectionString);
+                var all = GetAllSecrets(table, new StoredSecret(secret));
+
+                foreach (var aSecret in all)
+                {
+                    table.Execute(TableOperation.Delete(aSecret));
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
