@@ -45,7 +45,6 @@ NUGET
     Selenium.Support (2.47.0)
       Selenium.WebDriver (>= 2.47.0)
     Selenium.WebDriver (2.48.0)
-    SlowCheetah (2.5.15) - framework: >= net46
     Swashbuckle (5.2.2) - framework: >= net46
       Microsoft.AspNet.WebApi.WebHost (>= 4.0.20710)
       Swashbuckle.Core (>= 5.2.2)
