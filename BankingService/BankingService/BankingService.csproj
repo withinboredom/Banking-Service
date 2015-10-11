@@ -464,4 +464,23 @@
       </ItemGroup>
     </When>
   </Choose>
+  <PropertyGroup>
+  <CopyAllFilesToSingleFolderForPackageDependsOn>
+    CustomCollectFiles;
+    $(CopyAllFilesToSingleFolderForPackageDependsOn);
+  </CopyAllFilesToSingleFolderForPackageDependsOn>
+
+  <CopyAllFilesToSingleFolderForMsdeployDependsOn>
+    CustomCollectFiles;
+    $(CopyAllFilesToSingleFolderForPackageDependsOn);
+  </CopyAllFilesToSingleFolderForMsdeployDependsOn>
+</PropertyGroup>
+<Target Name="CustomCollectFiles">
+  <ItemGroup>
+    <_CustomFiles Include="$(SolutionDir)Selenium\bin\$(ConfigurationName)\**\*" />
+    <FilesForPackagingFromProject  Include="%(_CustomFiles.Identity)">
+      <DestinationRelativePath>App_Data\jobs\continuous\MyJob\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+    </FilesForPackagingFromProject>
+  </ItemGroup>
+</Target>
 </Project>
