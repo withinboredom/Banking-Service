@@ -31,6 +31,14 @@ namespace KeyVault.Controllers
         }
 
         [Route("{secretName:alpha}")]
+        [HttpGet]
+        public Secret GetSecretByName([FromUri] string secretName)
+        {
+            var manager = new SecretManager(CloudConfigurationManager.GetSetting("Auth:Storage"), Cloud.GetCoud());
+            return new Secret(manager.GetSecret(secretName));
+        }
+
+        [Route("{secretName:alpha}")]
         [HttpDelete]
         public void DeleteSecret([FromUri] string secretName)
         {
