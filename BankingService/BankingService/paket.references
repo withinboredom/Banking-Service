@@ -1,6 +1,5 @@
 Microsoft.AspNet.WebApi
 Microsoft.Azure.AppService.ApiApps.Service
-Microsoft.Web.WebJobs.Publish
 Selenium.Support
 Swashbuckle
 System.IdentityModel.Tokens.Jwt
