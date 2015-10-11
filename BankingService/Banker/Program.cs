@@ -23,6 +23,7 @@ namespace Banker
             catch (Exception ex)
             {
                 Console.WriteLine("Failed to connect to storage, assuming development");
+                Console.WriteLine(ex.Message);
             }
         }
     }

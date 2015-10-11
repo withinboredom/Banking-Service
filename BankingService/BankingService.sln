@@ -9,6 +9,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{CE0FD7
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingService", "BankingService\BankingService.csproj", "{824F7566-19D1-4176-BD50-32C6CF8FD950}"
+	ProjectSection(ProjectDependencies) = postProject
+		{47F53381-A6B4-4E13-A6E7-2344A9E21096} = {47F53381-A6B4-4E13-A6E7-2344A9E21096}
+		{558016D6-9C3B-44EE-8189-A6836F7B261F} = {558016D6-9C3B-44EE-8189-A6836F7B261F}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selenium", "Selenium\Selenium.csproj", "{47F53381-A6B4-4E13-A6E7-2344A9E21096}"
 EndProject
@@ -33,6 +37,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0CE2F915-B38D-4557-9A2C-51FD6F17EC26}"
 	ProjectSection(SolutionItems) = preProject
 		..\deploy.cmd = ..\deploy.cmd
+		paket.dependencies = paket.dependencies
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject

@@ -1,9 +1,2 @@
-Microsoft.Azure.KeyVault.Core
-Microsoft.Data.Edm
-Microsoft.Data.OData
-Microsoft.Data.Services.Client
-Newtonsoft.Json
 Selenium.Support
-Selenium.WebDriver
-System.Spatial
 WindowsAzure.Storage
