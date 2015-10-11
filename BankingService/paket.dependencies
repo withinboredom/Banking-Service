@@ -5,6 +5,7 @@ nuget Microsoft.AspNet.WebApi 5.2.3 framework: >= net46
 nuget Microsoft.AspNet.WebApi.Cors
 nuget Microsoft.Azure.AppService.ApiApps.Service 0.9.64 framework: >= net46
 nuget Microsoft.Azure.WebJobs.ServiceBus 1.0.1 framework: >= net452
+nuget Microsoft.Web.WebJobs.Publish
 nuget moq
 nuget Selenium.Support 2.47.0
 nuget SlowCheetah 2.5.15 framework: >= net46
