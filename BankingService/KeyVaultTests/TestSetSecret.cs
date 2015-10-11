@@ -46,6 +46,15 @@ namespace KeyVaultTests
         }
 
         [TestMethod]
+        public void TestOverwriteSecret()
+        {
+            var manager = createManager();
+            var test = manager.CreateSecret("overwrite", new Secret() {ContentType = "text", Value = "hellow"});
+            var over = manager.CreateSecret("overwrite", new Secret(test));
+            Assert.AreNotEqual(test.Version, over.Version, "Can't overwrite");
+        }
+
+        [TestMethod]
         public void TestAddVersion()
         {
             var manager = createManager();
