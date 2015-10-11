@@ -479,7 +479,13 @@
   <ItemGroup>
     <_CustomFiles Include="$(SolutionDir)Selenium\bin\$(ConfigurationName)\**\*" />
     <FilesForPackagingFromProject  Include="%(_CustomFiles.Identity)">
-      <DestinationRelativePath>App_Data\jobs\continuous\MyJob\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+      <DestinationRelativePath>App_Data\jobs\continuous\Selenium\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+    </FilesForPackagingFromProject>
+  </ItemGroup>
+  <ItemGroup>
+    <_CustomFiles Include="$(SolutionDir)Banker\bin\$(ConfigurationName)\**\*" />
+    <FilesForPackagingFromProject  Include="%(_CustomFiles.Identity)">
+      <DestinationRelativePath>App_Data\jobs\continuous\Banker\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
     </FilesForPackagingFromProject>
   </ItemGroup>
 </Target>
