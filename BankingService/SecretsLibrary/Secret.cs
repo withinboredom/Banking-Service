@@ -16,6 +16,8 @@ namespace SecretsLibrary
         public Secret(ISecret secret)
         {
             Value = secret.Value;
+            Name = secret.Name;
+            Version = secret.Version;
             ContentType = secret.ContentType;
             Id = secret.Id;
         }

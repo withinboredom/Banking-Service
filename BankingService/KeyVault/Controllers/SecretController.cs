@@ -26,28 +26,24 @@ namespace KeyVault.Controllers
         [HttpGet]
         public Secret GetSecret([FromUri] string secretName, [FromUri] int? version = null)
         {
-            var table = Cloud.GetCoud().GetTable("secrets", CloudConfigurationManager.GetSetting("Auth:Storage"));
+            var manager = new SecretManager(CloudConfigurationManager.GetSetting("Auth:Storage"), Cloud.GetCoud());
+            return new Secret(manager.GetSecret(secretName, version));
+        }
 
-            if (version.HasValue) return new Secret(StoredSecret.FromTable(table, secretName, version.Value));
-
-            var exists = Cloud.GetCoud().GetObject<StoredSecret>(table, Cloud.GetCoud().ToKey(secretName));
-            version = exists.Count();
-
-            return new Secret(StoredSecret.FromTable(table, secretName, version.Value));
+        [Route("{secretName:alpha}")]
+        [HttpGet]
+        public Secret GetSecretByName([FromUri] string secretName)
+        {
+            var manager = new SecretManager(CloudConfigurationManager.GetSetting("Auth:Storage"), Cloud.GetCoud());
+            return new Secret(manager.GetSecret(secretName));
         }
 
         [Route("{secretName:alpha}")]
         [HttpDelete]
         public void DeleteSecret([FromUri] string secretName)
         {
-            var table = Cloud.GetCoud().GetTable("secrets", CloudConfigurationManager.GetSetting("Auth:Storage"));
-
-            var exists = Cloud.GetCoud().GetObject<StoredSecret>(table, Cloud.GetCoud().ToKey(secretName));
-
-            foreach (var secretVersion in exists)
-            {
-                table.Execute(TableOperation.Delete(secretVersion));
-            }
+            var manager = new SecretManager(CloudConfigurationManager.GetSetting("Auth:Storage"), Cloud.GetCoud());
+            manager.DeleteSecret(new Secret() {Name = secretName});
         }
     }
 }

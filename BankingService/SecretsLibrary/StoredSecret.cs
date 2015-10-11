@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Reflection.Emit;
 using Interfaces.Secrets;
 using Microsoft.WindowsAzure.Storage.Table;
@@ -31,9 +32,17 @@ namespace SecretsLibrary
             RowKey = PartitionKey + ":" + Version.ToString();
         }
 
-        public static StoredSecret FromTable(CloudTable table, string name, int version)
+        public static StoredSecret FromTable(CloudTable table, string name, int? version)
         {
-            return Cloud.GetCoud().GetObject<StoredSecret>(table, Cloud.GetCoud().ToKey(name), version.ToString());
+            if (!version.HasValue)
+            {
+                var exists = Cloud.GetCoud().GetObject<StoredSecret>(table, Cloud.GetCoud().ToKey(name));
+                version = exists.Count();
+            }
+
+            var reader = new StoredSecret(new StoredSecret() { Name = name, Version = version.Value});
+
+            return Cloud.GetCoud().GetObject<StoredSecret>(table, reader.PartitionKey, reader.RowKey);
         }
     }
 }
