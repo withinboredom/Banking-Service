@@ -65,15 +65,6 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="binaries\chromedriver.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="binaries\phantomjs.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="binaries\selenium-server-standalone-2.47.1.jar">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.example.config">
       <SubType>Designer</SubType>
@@ -146,13 +137,35 @@
   </Target>
   -->
   <Import Project="..\.paket\paket.targets" />
-  <Import
-    Project="..\packages\Microsoft.Web.WebJobs.Publish\tools\webjobs.targets"
-    Condition="Exists('..\packages\Microsoft.Web.WebJobs.Publish\tools\webjobs.targets')" />
+  <Import Project="..\packages\Microsoft.Web.WebJobs.Publish\tools\webjobs.targets" Condition="Exists('..\packages\Microsoft.Web.WebJobs.Publish\tools\webjobs.targets')" />
   <PropertyGroup>
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
+  <PropertyGroup>
+    <CopyAllFilesToSingleFolderForPackageDependsOn>
+    CustomCollectFiles;
+    $(CopyAllFilesToSingleFolderForPackageDependsOn);
+  </CopyAllFilesToSingleFolderForPackageDependsOn>
+    <CopyAllFilesToSingleFolderForMsdeployDependsOn>
+    CustomCollectFiles;
+    $(CopyAllFilesToSingleFolderForPackageDependsOn);
+  </CopyAllFilesToSingleFolderForMsdeployDependsOn>
+  </PropertyGroup>
+  <Target Name="CustomCollectFiles">
+    <ItemGroup>
+      <_CustomFiles Include="$(SolutionDir)Selenium\bin\$(ConfigurationName)\**\*" />
+      <FilesForPackagingFromProject Include="%(_CustomFiles.Identity)">
+        <DestinationRelativePath>App_Data\jobs\continuous\Selenium\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+      </FilesForPackagingFromProject>
+    </ItemGroup>
+    <ItemGroup>
+      <_CustomFiles Include="$(SolutionDir)Banker\bin\$(ConfigurationName)\**\*" />
+      <FilesForPackagingFromProject Include="%(_CustomFiles.Identity)">
+        <DestinationRelativePath>App_Data\jobs\continuous\Banker\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+      </FilesForPackagingFromProject>
+    </ItemGroup>
+  </Target>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6'">
       <ItemGroup>
@@ -464,29 +477,4 @@
       </ItemGroup>
     </When>
   </Choose>
-  <PropertyGroup>
-  <CopyAllFilesToSingleFolderForPackageDependsOn>
-    CustomCollectFiles;
-    $(CopyAllFilesToSingleFolderForPackageDependsOn);
-  </CopyAllFilesToSingleFolderForPackageDependsOn>
-
-  <CopyAllFilesToSingleFolderForMsdeployDependsOn>
-    CustomCollectFiles;
-    $(CopyAllFilesToSingleFolderForPackageDependsOn);
-  </CopyAllFilesToSingleFolderForMsdeployDependsOn>
-</PropertyGroup>
-<Target Name="CustomCollectFiles">
-  <ItemGroup>
-    <_CustomFiles Include="$(SolutionDir)Selenium\bin\$(ConfigurationName)\**\*" />
-    <FilesForPackagingFromProject  Include="%(_CustomFiles.Identity)">
-      <DestinationRelativePath>App_Data\jobs\continuous\Selenium\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
-    </FilesForPackagingFromProject>
-  </ItemGroup>
-  <ItemGroup>
-    <_CustomFiles Include="$(SolutionDir)Banker\bin\$(ConfigurationName)\**\*" />
-    <FilesForPackagingFromProject  Include="%(_CustomFiles.Identity)">
-      <DestinationRelativePath>App_Data\jobs\continuous\Banker\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
-    </FilesForPackagingFromProject>
-  </ItemGroup>
-</Target>
 </Project>
