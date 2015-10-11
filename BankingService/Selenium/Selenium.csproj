@@ -69,9 +69,6 @@
     <None Include="Properties\webjob-publish-settings.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="binaries\phantomjs.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="binaries\selenium-server-standalone-2.47.1.jar">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
