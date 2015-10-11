@@ -69,9 +69,29 @@ namespace KeyVaultTests
             Assert.AreEqual(ending.Version, last.Version, "Null version");
         }
 
+        [TestMethod]
+        public void TestGetNullSecret()
+        {
+            var manager = createManager();
+            var invalid = manager.GetSecret("null");
+            Assert.IsNull(invalid);
+        }
+
+        [TestMethod]
         public void TestDeleteSecret()
         {
-            
+            var manager = createManager();
+            var beginning = manager.CreateSecret("get", new Secret() { ContentType = "text", Value = "one" });
+            var success = manager.DeleteSecret(new Secret() { Name = "get" });
+            Assert.IsTrue(success);
+        }
+
+        [TestMethod]
+        public void TestNonExistantDelete()
+        {
+            var manager = createManager();
+            var success = manager.DeleteSecret(new Secret() {Name = "null"});
+            Assert.IsTrue(success);
         }
     }
 }

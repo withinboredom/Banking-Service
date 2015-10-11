@@ -67,7 +67,8 @@ namespace SecretsLibrary
         public ISecret GetSecret(string secretName, int? version)
         {
             var table = _cloud.GetTable(Table, _connectionString);
-            return new Secret(StoredSecret.FromTable(table, secretName, version));
+            var theSecret = StoredSecret.FromTable(table, secretName, version);
+            return theSecret == null ? null : new Secret(StoredSecret.FromTable(table, secretName, version));
         }
 
         /// <summary>
