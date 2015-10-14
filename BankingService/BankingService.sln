@@ -53,6 +53,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Testing\Testing.csproj", "{05405EFB-E70D-4EDA-8A12-E00EA43AF0B3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankService", "BankService\BankService.csproj", "{93963E9D-48D8-4464-A9B5-42AEF76FADB3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{47F53381-A6B4-4E13-A6E7-2344A9E21096} = {47F53381-A6B4-4E13-A6E7-2344A9E21096}
+		{558016D6-9C3B-44EE-8189-A6836F7B261F} = {558016D6-9C3B-44EE-8189-A6836F7B261F}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
