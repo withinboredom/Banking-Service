@@ -7,10 +7,6 @@ using System.Web.Http;
 using DataLibrary.DataConstructs;
 using InfrastructureLibrary;
 using InfrastructureLibrary.Banks;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.PhantomJS;
-using OpenQA.Selenium.Remote;
 
 namespace BankingService.Controllers
 {

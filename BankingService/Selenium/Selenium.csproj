@@ -81,7 +81,6 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <Import Project="..\.paket\paket.targets" />
   <Import Project="$(SlowCheetahTargets)" Condition="Exists('$(SlowCheetahTargets)')" Label="SlowCheetah" />
   <!-- <Import
     Project="..\packages\Microsoft.Web.WebJobs.Publish\tools\webjobs.targets"

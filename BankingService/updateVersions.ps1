@@ -8,8 +8,8 @@ function updateVersion([String] $file) {
 	$bs > $file
 }
 
-updateVersion(".\BankingService\apiapp.json")
-updateVersion(".\KeyVault\apiapp.json")
-updateVersion(".\UserService\apiapp.json")
+updateVersion(".\BankService\apiapp.json")
+updateVersion(".\KeyVaultService\apiapp.json")
+#updateVersion(".\UserService\apiapp.json")
 
 Write-Host "Updated to version $version"
