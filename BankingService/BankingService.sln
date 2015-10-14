@@ -46,6 +46,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService", "UserService\UserService.csproj", "{F978B3D5-F183-4B05-9B03-51715FD2F125}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyVault", "KeyVault\KeyVault.csproj", "{3C30F43D-EE63-45B0-AC2C-F032DF052F86}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B735CD5C-4018-4124-8137-A8ACF9D5E931} = {B735CD5C-4018-4124-8137-A8ACF9D5E931}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.csproj", "{00F06FC4-6887-41B1-91D1-4BA92127ECDC}"
 EndProject
