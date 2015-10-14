@@ -8,7 +8,7 @@ function updateVersion([String] $file) {
 	$bs > $file
 }
 
-updateVersion(".\BankingService\apiapp.json")
+updateVersion(".\BankService\apiapp.json")
 updateVersion(".\KeyVault\apiapp.json")
 updateVersion(".\UserService\apiapp.json")
 
