@@ -11,3 +11,4 @@ nuget Selenium.Support 2.47.0
 nuget Swashbuckle 5.2.2 framework: >= net46
 nuget System.IdentityModel.Tokens.Jwt 4.0.2.206221351 framework: >= net46
 nuget WebApi.JsonWebToken
+nuget Microsoft.Azure.AppService
