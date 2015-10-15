@@ -83,7 +83,6 @@
   <ItemGroup>
     <Content Include="apiapp.json" />
     <Content Include="Properties\webjobs-list.json" />
-    <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
