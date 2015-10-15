@@ -5,4 +5,5 @@ System.IdentityModel.Tokens.Jwt
 WindowsAzure.Storage
 Microsoft.WindowsAzure.ConfigurationManager
 Microsoft.Azure.AppService
+Microsoft.Azure.WebJobs
 Microsoft.Web.WebJobs.Publish
