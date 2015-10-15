@@ -67,6 +67,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyVaultClient", "KeyVaultClient\KeyVaultClient.csproj", "{4EE4C145-6C3D-4C14-951D-476D40E19CAB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootStrap", "BootStrap\BootStrap.csproj", "{B735CD5C-4018-4124-8137-A8ACF9D5E931}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4EE4C145-6C3D-4C14-951D-476D40E19CAB} = {4EE4C145-6C3D-4C14-951D-476D40E19CAB}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
