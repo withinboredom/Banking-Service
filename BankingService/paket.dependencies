@@ -6,7 +6,7 @@ nuget Microsoft.AspNet.WebApi.Client
 nuget Microsoft.AspNet.WebApi.Cors
 nuget Microsoft.Azure.AppService.ApiApps.Service 0.9.64 framework: >= net46
 nuget Microsoft.Azure.WebJobs.ServiceBus 1.0.1 framework: >= net452
-nuget Microsoft.Rest.ClientRuntime
+nuget Microsoft.Rest.ClientRuntime 0.9.4
 nuget Microsoft.Web.WebJobs.Publish
 nuget moq
 nuget Newtonsoft.Json
