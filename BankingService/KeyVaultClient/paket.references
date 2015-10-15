@@ -2,3 +2,4 @@
 Microsoft.Azure.AppService
 WindowsAzure.MobileServices
 Newtonsoft.Json
+Microsoft.Rest.ClientRuntime
