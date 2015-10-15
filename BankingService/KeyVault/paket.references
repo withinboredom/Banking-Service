@@ -4,3 +4,4 @@ Swashbuckle
 System.IdentityModel.Tokens.Jwt
 WindowsAzure.Storage
 Microsoft.WindowsAzure.ConfigurationManager
+Microsoft.Azure.AppService
