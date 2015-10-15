@@ -55,7 +55,6 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
     <None Include="paket.references" />
     <None Include="Properties\webjob-publish-settings.json" />
   </ItemGroup>
