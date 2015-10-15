@@ -12,7 +12,7 @@ NUGET
     Microsoft.AspNet.Cors (5.2.3)
     Microsoft.AspNet.WebApi (5.2.3) - framework: >= net46
       Microsoft.AspNet.WebApi.WebHost (>= 5.2.3 < 5.3.0)
-    Microsoft.AspNet.WebApi.Client (5.2.3) - framework: >= net46
+    Microsoft.AspNet.WebApi.Client (5.2.3)
     Microsoft.AspNet.WebApi.Core (5.2.3) - framework: >= net46
       Microsoft.AspNet.WebApi.Client (>= 5.2.3)
     Microsoft.AspNet.WebApi.Cors (5.2.3)
@@ -51,7 +51,7 @@ NUGET
     Microsoft.Web.WebJobs.Publish (1.0.7)
     Microsoft.WindowsAzure.ConfigurationManager (3.1.0) - framework: >= net452
     Moq (4.2.1507.118)
-    Newtonsoft.Json (7.0.1) - framework: >= net452
+    Newtonsoft.Json (7.0.1)
     RestSharp (105.2.3) - framework: >= net40
     Selenium.Support (2.47.0)
       Selenium.WebDriver (>= 2.47.0)
