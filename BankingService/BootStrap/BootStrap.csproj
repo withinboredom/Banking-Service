@@ -58,6 +58,12 @@
     <None Include="paket.references" />
     <None Include="Properties\webjob-publish-settings.json" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KeyVaultClient\KeyVaultClient.csproj">
+      <Project>{4ee4c145-6c3d-4c14-951d-476d40e19cab}</Project>
+      <Name>KeyVaultClient</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
