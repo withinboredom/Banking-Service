@@ -7,6 +7,7 @@ using KeyVaultClient;
 using Microsoft.Azure;
 using Microsoft.Azure.WebJobs;
 using System.Net.Http;
+using KeyVaultClient.Models;
 
 namespace BootStrap
 {
@@ -18,11 +19,28 @@ namespace BootStrap
         static void Main()
         {
             var client = new KeyVault(new Uri(CloudConfigurationManager.GetSetting("KeyVaultUri")));
-            
 
-            var host = new JobHost();
-            // The following code ensures that the WebJob will be running continuously
+            var jobStorage = client.Secret.GetSecretByName("JobStorage");
+
+            if (jobStorage == null)
+            {
+                jobStorage = new Secret()
+                {
+                    ContentType = "String",
+                    Name = "JobStorage",
+                    Value = CloudConfigurationManager.GetSetting("JobStorage")
+                };
+
+                jobStorage = client.Secret.CreateSecret("JobStorage", jobStorage);
+            }
+
+            var jobStorageConnString = jobStorage.Value;
+
+            var host = new JobHost(new JobHostConfiguration(jobStorageConnString));
             
+            host.Start();
+
+            host.Stop();
         }
     }
 }
