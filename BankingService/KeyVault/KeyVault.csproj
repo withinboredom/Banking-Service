@@ -125,7 +125,7 @@
     <ItemGroup>
       <_CustomFiles Include="$(SolutionDir)BootStrap\bin\$(ConfigurationName)\**\*" />
       <FilesForPackagingFromProject Include="%(_CustomFiles.Identity)">
-        <DestinationRelativePath>App_Data\jobs\trigger\BootStrap\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+        <DestinationRelativePath>App_Data\jobs\triggered\BootStrap\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
       </FilesForPackagingFromProject>
     </ItemGroup>
   </Target>
