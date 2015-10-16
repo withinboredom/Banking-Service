@@ -1,3 +1,4 @@
-Microsoft.Azure.WebJobs
+﻿Microsoft.Azure.WebJobs
 Microsoft.WindowsAzure.ConfigurationManager
 Microsoft.Azure.WebJobs.Core
+System.Net.Http

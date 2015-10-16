@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KeyVaultClient;
+using Microsoft.Azure;
 using Microsoft.Azure.WebJobs;
+using System.Net.Http;
 
 namespace BootStrap
 {
@@ -14,9 +17,12 @@ namespace BootStrap
         // AzureWebJobsDashboard and AzureWebJobsStorage
         static void Main()
         {
+            var client = new KeyVault(new Uri(CloudConfigurationManager.GetSetting("KeyVaultUri")));
+            
+
             var host = new JobHost();
             // The following code ensures that the WebJob will be running continuously
-            host.RunAndBlock();
+            
         }
     }
 }
