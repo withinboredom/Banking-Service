@@ -37,6 +37,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0CE2F915-B38D-4557-9A2C-51FD6F17EC26}"
 	ProjectSection(SolutionItems) = preProject
 		..\deploy.cmd = ..\deploy.cmd
+		global.json = global.json
 		paket.dependencies = paket.dependencies
 		..\README.md = ..\README.md
 		updateVersions.ps1 = updateVersions.ps1
@@ -45,6 +46,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService", "UserService\UserService.csproj", "{F978B3D5-F183-4B05-9B03-51715FD2F125}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyVault", "KeyVault\KeyVault.csproj", "{3C30F43D-EE63-45B0-AC2C-F032DF052F86}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B735CD5C-4018-4124-8137-A8ACF9D5E931} = {B735CD5C-4018-4124-8137-A8ACF9D5E931}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.csproj", "{00F06FC4-6887-41B1-91D1-4BA92127ECDC}"
 EndProject
@@ -57,6 +61,15 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecretsLibrary", "SecretsLibrary\SecretsLibrary.csproj", "{F3952029-DDC3-4325-9165-66DD23A37B21}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Testing\Testing.csproj", "{05405EFB-E70D-4EDA-8A12-E00EA43AF0B3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{A02F7A8A-4020-458C-8858-176B0E7D713D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyVaultClient", "KeyVaultClient\KeyVaultClient.csproj", "{4EE4C145-6C3D-4C14-951D-476D40E19CAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootStrap", "BootStrap\BootStrap.csproj", "{B735CD5C-4018-4124-8137-A8ACF9D5E931}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4EE4C145-6C3D-4C14-951D-476D40E19CAB} = {4EE4C145-6C3D-4C14-951D-476D40E19CAB}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -116,6 +129,14 @@ Global
 		{05405EFB-E70D-4EDA-8A12-E00EA43AF0B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05405EFB-E70D-4EDA-8A12-E00EA43AF0B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05405EFB-E70D-4EDA-8A12-E00EA43AF0B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EE4C145-6C3D-4C14-951D-476D40E19CAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EE4C145-6C3D-4C14-951D-476D40E19CAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EE4C145-6C3D-4C14-951D-476D40E19CAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EE4C145-6C3D-4C14-951D-476D40E19CAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B735CD5C-4018-4124-8137-A8ACF9D5E931}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B735CD5C-4018-4124-8137-A8ACF9D5E931}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B735CD5C-4018-4124-8137-A8ACF9D5E931}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B735CD5C-4018-4124-8137-A8ACF9D5E931}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -136,5 +157,8 @@ Global
 		{39D169FC-6F26-46FD-96E6-A90794426A19} = {5E284A08-B8DC-4099-BC03-81BEE519A056}
 		{F3952029-DDC3-4325-9165-66DD23A37B21} = {39D169FC-6F26-46FD-96E6-A90794426A19}
 		{05405EFB-E70D-4EDA-8A12-E00EA43AF0B3} = {5E284A08-B8DC-4099-BC03-81BEE519A056}
+		{A02F7A8A-4020-458C-8858-176B0E7D713D} = {5E284A08-B8DC-4099-BC03-81BEE519A056}
+		{4EE4C145-6C3D-4C14-951D-476D40E19CAB} = {A02F7A8A-4020-458C-8858-176B0E7D713D}
+		{B735CD5C-4018-4124-8137-A8ACF9D5E931} = {3C637FFF-F2E3-4148-9C45-115ED1C22C67}
 	EndGlobalSection
 EndGlobal
