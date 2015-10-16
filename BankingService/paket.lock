@@ -51,7 +51,6 @@ NUGET
       Microsoft.Net.Http (>= 2.2.22) - framework: portable-net403+win+wpa81, net40
       Newtonsoft.Json (>= 6.0.4) - framework: portable-net403+win+wpa81, >= net40
     Microsoft.Web.Infrastructure (1.0.0) - framework: >= net40
-    Microsoft.Web.WebJobs.Publish (1.0.7)
     Microsoft.WindowsAzure.ConfigurationManager (3.1.0) - framework: >= net452
     Moq (4.2.1507.118)
     Newtonsoft.Json (7.0.1)
