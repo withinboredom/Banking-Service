@@ -40,6 +40,8 @@ namespace BootStrap
             
             host.Start();
 
+            Console.WriteLine("Bootstrapped");
+
             host.Stop();
         }
     }
