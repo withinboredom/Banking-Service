@@ -26,7 +26,6 @@ NUGET
       Newtonsoft.Json (>= 6.0.4)
       WindowsAzure.MobileServices (>= 2.0.0-alpha)
     Microsoft.Azure.AppService.ApiApps.Service (0.9.64) - framework: >= net46
-    Microsoft.Azure.KeyVault.Core (1.0.0) - framework: wpv8.0, >= net452
     Microsoft.Azure.WebJobs (1.0.1)
       Microsoft.Azure.WebJobs.Core (1.0.1)
       Newtonsoft.Json (>= 6.0.4)
@@ -41,10 +40,6 @@ NUGET
     Microsoft.Bcl.Async (1.0.168) - framework: net40, portable-net403+win+wpa81
       Microsoft.Bcl (>= 1.1.8)
     Microsoft.Bcl.Build (1.0.21) - import_targets: false, framework: net40, portable-net403+win+wpa81
-    Microsoft.Data.Edm (5.6.4) - framework: winv4.5, wpv8.1, wpv8.0, >= net452
-    Microsoft.Data.OData (5.6.4) - framework: winv4.5, wpv8.1, wpv8.0, >= net452
-      Microsoft.Data.Edm (5.6.4)
-      System.Spatial (5.6.4)
     Microsoft.IdentityModel (6.1.7600.16394) - framework: net40
     Microsoft.Net.Http (2.2.29)
       Microsoft.Bcl (>= 1.1.10)
@@ -71,7 +66,6 @@ NUGET
     Swashbuckle.Core (5.2.2) - framework: >= net46
       Microsoft.AspNet.WebApi.Core (>= 4.0.20710)
     System.IdentityModel.Tokens.Jwt (4.0.2.206221351) - framework: >= net46
-    System.Spatial (5.6.4) - framework: winv4.5, wpv8.1, wpv8.0, >= net452
     WebActivatorEx (2.0.6) - framework: >= net40
       Microsoft.Web.Infrastructure (>= 1.0.0.0)
     WebApi.JsonWebToken (0.2.0)
@@ -80,9 +74,6 @@ NUGET
       Microsoft.Bcl (>= 1.1.9)
       Microsoft.Net.Http (>= 2.2.28)
       Newtonsoft.Json (>= 6.0.4)
-    WindowsAzure.ServiceBus (3.0.4) - framework: >= net452
+    WindowsAzure.ServiceBus (3.0.6) - framework: >= net452
       Microsoft.WindowsAzure.ConfigurationManager
     WindowsAzure.Storage (6.0.0) - framework: >= net452
-      Microsoft.Azure.KeyVault.Core (>= 1.0.0) - framework: wpv8.0, >= net40
-      Microsoft.Data.OData (>= 5.6.4) - framework: winv4.5, wpv8.1, wpv8.0, >= net40
-      Newtonsoft.Json (>= 6.0.8) - framework: winv4.5, wpv8.1, wpv8.0, >= net40
