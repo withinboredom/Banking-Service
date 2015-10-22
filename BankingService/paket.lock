@@ -13,6 +13,7 @@ NUGET
     Microsoft.AspNet.WebApi (5.2.3) - framework: >= net46
       Microsoft.AspNet.WebApi.WebHost (>= 5.2.3 < 5.3.0)
     Microsoft.AspNet.WebApi.Client (5.2.3)
+      Newtonsoft.Json (>= 6.0.4) - framework: portable-wp80+win+net45+wp81+wpa81, >= net45
     Microsoft.AspNet.WebApi.Core (5.2.3) - framework: >= net46
       Microsoft.AspNet.WebApi.Client (>= 5.2.3)
     Microsoft.AspNet.WebApi.Cors (5.2.3)
@@ -26,6 +27,10 @@ NUGET
       Newtonsoft.Json (>= 6.0.4)
       WindowsAzure.MobileServices (>= 2.0.0-alpha)
     Microsoft.Azure.AppService.ApiApps.Service (0.9.64) - framework: >= net46
+      Microsoft.AspNet.WebApi.Client (>= 5.2.2) - framework: >= net45
+      Newtonsoft.Json (>= 6.0.4) - framework: >= net45
+      System.IdentityModel.Tokens.Jwt (>= 4.0.0) - framework: >= net45
+    Microsoft.Azure.KeyVault.Core (1.0.0) - framework: >= net452
     Microsoft.Azure.WebJobs (1.0.1)
       Microsoft.Azure.WebJobs.Core (1.0.1)
       Newtonsoft.Json (>= 6.0.4)
@@ -40,6 +45,12 @@ NUGET
     Microsoft.Bcl.Async (1.0.168) - framework: net40, portable-net403+win+wpa81
       Microsoft.Bcl (>= 1.1.8)
     Microsoft.Bcl.Build (1.0.21) - import_targets: false, framework: net40, portable-net403+win+wpa81
+    Microsoft.Data.Edm (5.6.4) - framework: >= net452
+    Microsoft.Data.OData (5.6.4) - framework: >= net452
+      Microsoft.Data.Edm (5.6.4)
+      System.Spatial (5.6.4)
+    Microsoft.Data.Services.Client (5.6.4) - framework: >= net452
+      Microsoft.Data.OData (5.6.4)
     Microsoft.IdentityModel (6.1.7600.16394) - framework: net40
     Microsoft.Net.Http (2.2.29)
       Microsoft.Bcl (>= 1.1.10)
@@ -275,6 +286,7 @@ NUGET
       System.Threading (>= 4.0.10) - framework: dnxcore50
       System.Threading.Tasks (>= 4.0.0) - framework: dnxcore50
       System.Threading.Tasks (>= 4.0.10) - framework: dnxcore50
+    System.Spatial (5.6.4) - framework: >= net452
     System.Text.Encoding (4.0.10) - framework: dnxcore50
       System.Runtime (>= 4.0.0) - framework: dnxcore50
     System.Text.Encoding.Extensions (4.0.10) - framework: dnxcore50
@@ -304,3 +316,7 @@ NUGET
     WindowsAzure.ServiceBus (3.0.6) - framework: >= net452
       Microsoft.WindowsAzure.ConfigurationManager
     WindowsAzure.Storage (6.0.0) - framework: >= net452
+      Microsoft.Azure.KeyVault.Core (>= 1.0.0) - framework: wpv8.0, >= net40
+      Microsoft.Data.OData (>= 5.6.4) - framework: winv4.5, wpv8.1, wpv8.0, >= net40
+      Microsoft.Data.Services.Client (>= 5.6.4) - framework: >= net40
+      Newtonsoft.Json (>= 6.0.8) - framework: winv4.5, wpv8.1, wpv8.0, >= net40
