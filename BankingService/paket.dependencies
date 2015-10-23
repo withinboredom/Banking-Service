@@ -2,18 +2,13 @@ source https://www.nuget.org/api/v2/
 
 nuget Auth0-ASPNET
 nuget Microsoft.AspNet.WebApi framework: >= net46
-nuget Microsoft.AspNet.WebApi.Client
 nuget Microsoft.AspNet.WebApi.Cors
 nuget Microsoft.Azure.AppService.ApiApps.Service framework: >= net46
-nuget Microsoft.Azure.WebJobs
 nuget Microsoft.Azure.WebJobs.ServiceBus
 nuget Microsoft.Rest.ClientRuntime
 nuget moq
-nuget Newtonsoft.Json
 nuget Selenium.Support
 nuget Swashbuckle framework: >= net46
-nuget System.IdentityModel.Tokens.Jwt framework: >= net46
 nuget System.Net.Http
 nuget WebApi.JsonWebToken
 nuget Microsoft.Azure.AppService
-nuget WindowsAzure.MobileServices 2.0.0-beta-2
