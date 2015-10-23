@@ -127,10 +127,12 @@ namespace KeyVaultClient
             string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
             if (statusCode != HttpStatusCode.OK)
             {
-                HttpOperationException<object> ex = new HttpOperationException<object>();
-                ex.Request = httpRequest;
-                ex.Response = httpResponse;
-                ex.Body = null;
+                var ex = new HttpOperationException
+                {
+                    Request = httpRequest,
+                    Response = httpResponse,
+                    Body = null
+                };
                 if (shouldTrace)
                 {
                     ServiceClientTracing.Error(invocationId, ex);
@@ -236,10 +238,12 @@ namespace KeyVaultClient
             string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
             if (statusCode != HttpStatusCode.NoContent)
             {
-                HttpOperationException<object> ex = new HttpOperationException<object>();
-                ex.Request = httpRequest;
-                ex.Response = httpResponse;
-                ex.Body = null;
+                var ex = new HttpOperationException
+                {
+                    Request = httpRequest,
+                    Response = httpResponse,
+                    Body = null
+                };
                 if (shouldTrace)
                 {
                     ServiceClientTracing.Error(invocationId, ex);
@@ -339,7 +343,7 @@ namespace KeyVaultClient
             string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
             if (statusCode != HttpStatusCode.OK)
             {
-                HttpOperationException<object> ex = new HttpOperationException<object>();
+                HttpOperationException ex = new HttpOperationException();
                 ex.Request = httpRequest;
                 ex.Response = httpResponse;
                 ex.Body = null;
@@ -448,7 +452,7 @@ namespace KeyVaultClient
             string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
             if (statusCode != HttpStatusCode.OK)
             {
-                HttpOperationException<object> ex = new HttpOperationException<object>();
+                HttpOperationException ex = new HttpOperationException();
                 ex.Request = httpRequest;
                 ex.Response = httpResponse;
                 ex.Body = null;

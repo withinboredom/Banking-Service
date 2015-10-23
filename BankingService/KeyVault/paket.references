@@ -1,8 +1,6 @@
 Microsoft.AspNet.WebApi
 Microsoft.Azure.AppService.ApiApps.Service
 Swashbuckle
-System.IdentityModel.Tokens.Jwt
-WindowsAzure.Storage
 Microsoft.WindowsAzure.ConfigurationManager
 Microsoft.Azure.AppService
 Microsoft.Azure.WebJobs

@@ -2,4 +2,3 @@ Microsoft.AspNet.WebApi
 Microsoft.Azure.AppService.ApiApps.Service
 Microsoft.Web.Infrastructure
 Moq
-Newtonsoft.Json
