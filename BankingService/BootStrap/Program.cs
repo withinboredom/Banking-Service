@@ -18,7 +18,7 @@ namespace BootStrap
         // AzureWebJobsDashboard and AzureWebJobsStorage
         static void Main()
         {
-            var client = new KeyVault(new Uri(CloudConfigurationManager.GetSetting("KeyVaultUri")));
+            var client = new KeyVault(new Uri(CloudConfigurationManager.GetSetting("KeyVault")));
 
             var jobStorage = client.Secret.GetSecretByName("JobStorage");
 

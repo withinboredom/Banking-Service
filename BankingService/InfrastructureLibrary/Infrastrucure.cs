@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KeyVaultClient;
 using Microsoft.Azure;
 using Microsoft.ServiceBus;
 using Microsoft.ServiceBus.Messaging;
@@ -27,7 +28,8 @@ namespace InfrastructureLibrary
         private static string GetQueueConnectionString()
         {
             return _queueConnectionString ??
-                   (_queueConnectionString = CloudConfigurationManager.GetSetting("AzureWebJobsServiceBus"));
+                   (new KeyVault(new Uri(CloudConfigurationManager.GetSetting("KeyVault")))).Secret.GetSecretByName(
+                       "JobStorage").Value;
         }
 
         /// <summary>

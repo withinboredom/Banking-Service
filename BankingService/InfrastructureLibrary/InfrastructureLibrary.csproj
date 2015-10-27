@@ -31,12 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="app.config.install.xdt">
-      <Paket>True</Paket>
-    </Content>
     <Content Include="web.config.install.xdt">
       <Paket>True</Paket>
     </Content>
+    <Reference Include="Microsoft.Rest.ClientRuntime">
+      <HintPath>..\BootStrap\bin\Debug\Microsoft.Rest.ClientRuntime.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -61,6 +61,10 @@
     <ProjectReference Include="..\Interfaces\Interfaces.csproj">
       <Project>{da4f69b9-912d-4411-b016-c836f3d7f498}</Project>
       <Name>Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KeyVaultClient\KeyVaultClient.csproj">
+      <Project>{4ee4c145-6c3d-4c14-951d-476d40e19cab}</Project>
+      <Name>KeyVaultClient</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
