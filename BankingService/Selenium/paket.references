@@ -1,3 +1,4 @@
 Microsoft.Azure.WebJobs
 Microsoft.WindowsAzure.ConfigurationManager
 System.Net.Http
+Microsoft.Rest.ClientRuntime
