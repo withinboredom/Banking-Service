@@ -223,7 +223,7 @@ NUGET
       System.Runtime (>= 4.0.20) - framework: dnxcore50
       System.Runtime.Extensions (>= 4.0.0) - framework: dnxcore50
       System.Threading (>= 4.0.0) - framework: dnxcore50
-    System.Net.Http (4.0.0)
+    System.Net.Http (4.0.0) - framework: dnxcore50
       Microsoft.Win32.Primitives (>= 4.0.0) - framework: dnxcore50
       System.Collections (>= 4.0.10) - framework: dnxcore50
       System.Diagnostics.Debug (>= 4.0.10) - framework: dnxcore50
