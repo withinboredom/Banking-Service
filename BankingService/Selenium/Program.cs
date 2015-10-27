@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using KeyVaultClient;
+using Microsoft.Azure;
 using Microsoft.Azure.WebJobs;
 
 namespace Selenium
@@ -19,9 +21,12 @@ namespace Selenium
         {
             AppDomain.CurrentDomain.ProcessExit += CurrentDomainOnProcessExit;
 
+            var vault = new KeyVault(new Uri(CloudConfigurationManager.GetSetting("KeyVault")));
+            var jobStorageSecret = vault.Secret.GetSecretByName("JobStorage");
+
             try
             {
-                var host = new JobHost();
+                var host = new JobHost(new JobHostConfiguration(jobStorageSecret.Value));
                 // The following code ensures that the WebJob will be running continuously
                 host.Start();
             }
