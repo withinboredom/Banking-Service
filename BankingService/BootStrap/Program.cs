@@ -18,11 +18,12 @@ namespace BootStrap
         // AzureWebJobsDashboard and AzureWebJobsStorage
         static void Main()
         {
-            var client = new KeyVault(new Uri(CloudConfigurationManager.GetSetting("KeyVaultUri")));
+            var client = new KeyVault(new Uri(CloudConfigurationManager.GetSetting("KeyVault")));
 
             var jobStorage = client.Secret.GetSecretByName("JobStorage");
+            var sb = client.Secret.GetSecretByName("ServiceBus");
 
-            if (jobStorage == null)
+            if (jobStorage.Value != CloudConfigurationManager.GetSetting("JobStorage"))
             {
                 jobStorage = new Secret()
                 {
@@ -32,6 +33,18 @@ namespace BootStrap
                 };
 
                 jobStorage = client.Secret.CreateSecret("JobStorage", jobStorage);
+            }
+
+            if (sb.Value != CloudConfigurationManager.GetSetting("ServiceBus"))
+            {
+                sb = new Secret()
+                {
+                    ContentType = "String",
+                    Name = "ServiceBus",
+                    Value = CloudConfigurationManager.GetSetting("ServiceBus")
+                };
+
+                sb = client.Secret.CreateSecret("ServiceBus", sb);
             }
 
             var jobStorageConnString = jobStorage.Value;
