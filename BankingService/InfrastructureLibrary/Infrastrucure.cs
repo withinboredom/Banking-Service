@@ -29,7 +29,7 @@ namespace InfrastructureLibrary
         {
             return _queueConnectionString ??
                    (_queueConnectionString = (new KeyVault(new Uri(CloudConfigurationManager.GetSetting("KeyVault")))).Secret.GetSecretByName(
-                       "JobStorage").Value);
+                       "ServiceBus").Value);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace InfrastructureLibrary
         private static string GetStorageConnectionString()
         {
             return _storageConnectionString ??
-                   (_storageConnectionString = CloudConfigurationManager.GetSetting("AzureWebJobsStorage"));
+                   (_storageConnectionString = new KeyVault(new Uri(CloudConfigurationManager.GetSetting("KeyVault"))).Secret.GetSecretByName("JobStorage").Value);
         }
 
         public static CloudStorageAccount GetStorageAccount()

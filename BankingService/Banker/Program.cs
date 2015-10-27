@@ -12,7 +12,7 @@ namespace Banker
     // To learn more about Microsoft Azure WebJobs SDK, please see http://go.microsoft.com/fwlink/?LinkID=320976
     class Program
     {
-        private static string GetStorage(int retry)
+        private static string GetStorage(string secret, int retry)
         {
             var vault = new KeyVault(new Uri(CloudConfigurationManager.GetSetting("KeyVault")));
             while (true)
@@ -22,7 +22,7 @@ namespace Banker
                     return null;
                 }
 
-                var jobStorageSecret = vault.Secret.GetSecretByName("JobStorage");
+                var jobStorageSecret = vault.Secret.GetSecretByName(secret);
 
                 if (jobStorageSecret.Value != null) return jobStorageSecret.Value;
 
@@ -35,11 +35,15 @@ namespace Banker
         // AzureWebJobsDashboard and AzureWebJobsStorage
         static void Main()
         {
-            var jobStorageSecret = GetStorage(10);
+            var jobStorageSecret = GetStorage("JobStorage", 10);
+            var sb = GetStorage("ServiceBus", 10);
 
             try
             {
-                var host = new JobHost(new JobHostConfiguration(jobStorageSecret));
+                var host = new JobHost(new JobHostConfiguration(jobStorageSecret)
+                {
+                    ServiceBusConnectionString = sb
+                });
                 // The following code ensures that the WebJob will be running continuously
                 host.RunAndBlock();
             }
