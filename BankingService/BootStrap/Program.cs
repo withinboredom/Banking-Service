@@ -22,7 +22,7 @@ namespace BootStrap
 
             var jobStorage = client.Secret.GetSecretByName("JobStorage");
 
-            if (jobStorage.Value == null)
+            if (jobStorage.Value != CloudConfigurationManager.GetSetting("JobStorage"))
             {
                 jobStorage = new Secret()
                 {

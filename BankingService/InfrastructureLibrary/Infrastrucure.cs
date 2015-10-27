@@ -28,8 +28,8 @@ namespace InfrastructureLibrary
         private static string GetQueueConnectionString()
         {
             return _queueConnectionString ??
-                   (new KeyVault(new Uri(CloudConfigurationManager.GetSetting("KeyVault")))).Secret.GetSecretByName(
-                       "JobStorage").Value;
+                   (_queueConnectionString = (new KeyVault(new Uri(CloudConfigurationManager.GetSetting("KeyVault")))).Secret.GetSecretByName(
+                       "JobStorage").Value);
         }
 
         /// <summary>
