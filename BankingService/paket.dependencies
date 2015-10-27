@@ -9,6 +9,5 @@ nuget Microsoft.Rest.ClientRuntime
 nuget moq
 nuget Selenium.Support
 nuget Swashbuckle framework: >= net46
-nuget System.Net.Http
 nuget WebApi.JsonWebToken
 nuget Microsoft.Azure.AppService
