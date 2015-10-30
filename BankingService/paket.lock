@@ -12,8 +12,7 @@ NUGET
     Microsoft.AspNet.Cors (5.2.3)
     Microsoft.AspNet.WebApi (5.2.3) - framework: >= net46
       Microsoft.AspNet.WebApi.WebHost (>= 5.2.3 < 5.3.0)
-    Microsoft.AspNet.WebApi.Client (5.2.3)
-      Microsoft.Net.Http (>= 2.2.22) - framework: portable-wp80+win+net45+wp81+wpa81
+    Microsoft.AspNet.WebApi.Client (5.2.3) - framework: >= net46
       Newtonsoft.Json (>= 6.0.4) - framework: portable-wp80+win+net45+wp81+wpa81, >= net45
     Microsoft.AspNet.WebApi.Core (5.2.3)
       Microsoft.AspNet.WebApi.Client (>= 5.2.3)
@@ -41,9 +40,9 @@ NUGET
       Microsoft.Azure.WebJobs (1.0.1)
       Newtonsoft.Json (>= 6.0.4)
       WindowsAzure.ServiceBus (>= 2.3.1.0)
-    Microsoft.Bcl (1.1.10) - framework: portable-wp80+win+net45+wp81+wpa81
+    Microsoft.Bcl (1.1.10)
       Microsoft.Bcl.Build (>= 1.0.14)
-    Microsoft.Bcl.Build (1.0.21) - import_targets: false, framework: portable-wp80+win+net45+wp81+wpa81
+    Microsoft.Bcl.Build (1.0.21) - import_targets: false
     Microsoft.CSharp (4.0.0) - framework: dnxcore50
       System.Collections (>= 4.0.10) - framework: dnxcore50
       System.Diagnostics.Debug (>= 4.0.10) - framework: dnxcore50
@@ -68,7 +67,7 @@ NUGET
     Microsoft.Data.Services.Client (5.6.4) - framework: >= net40
       Microsoft.Data.OData (5.6.4)
     Microsoft.IdentityModel (6.1.7600.16394) - framework: net40
-    Microsoft.Net.Http (2.2.29) - framework: portable-wp80+win+net45+wp81+wpa81
+    Microsoft.Net.Http (2.2.29)
       Microsoft.Bcl (>= 1.1.10)
       Microsoft.Bcl.Build (>= 1.0.14)
     Microsoft.Rest.ClientRuntime (1.4.1)
@@ -84,7 +83,7 @@ NUGET
       System.Runtime.InteropServices (>= 4.0.20) - framework: dnxcore50
     Microsoft.WindowsAzure.ConfigurationManager (3.1.0)
     Moq (4.2.1510.2205)
-    Newtonsoft.Json (7.0.1) - framework: >= net40
+    Newtonsoft.Json (7.0.1) - framework: dnxcore50, portable-net45+win80+wpa81, >= net45
     RestSharp (105.2.3) - framework: >= net40
     Selenium.Support (2.48.0)
       Selenium.WebDriver (>= 2.48.0)
