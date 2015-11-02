@@ -397,7 +397,7 @@ NUGET
       Newtonsoft.Json (>= 6.0.4)
     WindowsAzure.ServiceBus (3.0.7)
       Microsoft.WindowsAzure.ConfigurationManager
-    WindowsAzure.Storage (6.0.0)
+    WindowsAzure.Storage (6.1.0)
       Microsoft.Azure.KeyVault.Core (>= 1.0.0) - framework: wpv8.0, >= net40
       Microsoft.Data.OData (>= 5.6.4) - framework: winv4.5, wpv8.1, wpv8.0, >= net40
       Microsoft.Data.Services.Client (>= 5.6.4) - framework: >= net40
