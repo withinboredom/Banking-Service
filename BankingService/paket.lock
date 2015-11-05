@@ -12,10 +12,9 @@ NUGET
     Microsoft.AspNet.Cors (5.2.3)
     Microsoft.AspNet.WebApi (5.2.3) - framework: >= net46
       Microsoft.AspNet.WebApi.WebHost (>= 5.2.3 < 5.3.0)
-    Microsoft.AspNet.WebApi.Client (5.2.3)
-      Microsoft.Net.Http (>= 2.2.22) - framework: portable-wp80+win+net45+wp81+wpa81
+    Microsoft.AspNet.WebApi.Client (5.2.3) - framework: >= net46
       Newtonsoft.Json (>= 6.0.4) - framework: portable-wp80+win+net45+wp81+wpa81, >= net45
-    Microsoft.AspNet.WebApi.Core (5.2.3)
+    Microsoft.AspNet.WebApi.Core (5.2.3) - framework: >= net46
       Microsoft.AspNet.WebApi.Client (>= 5.2.3)
     Microsoft.AspNet.WebApi.Cors (5.2.3)
       Microsoft.AspNet.Cors (>= 5.2.3)
@@ -41,9 +40,9 @@ NUGET
       Microsoft.Azure.WebJobs (1.0.1)
       Newtonsoft.Json (>= 6.0.4)
       WindowsAzure.ServiceBus (>= 2.3.1.0)
-    Microsoft.Bcl (1.1.10) - framework: portable-wp80+win+net45+wp81+wpa81
+    Microsoft.Bcl (1.1.10)
       Microsoft.Bcl.Build (>= 1.0.14)
-    Microsoft.Bcl.Build (1.0.21) - import_targets: false, framework: portable-wp80+win+net45+wp81+wpa81
+    Microsoft.Bcl.Build (1.0.21) - import_targets: false
     Microsoft.CSharp (4.0.0) - framework: dnxcore50
       System.Collections (>= 4.0.10) - framework: dnxcore50
       System.Diagnostics.Debug (>= 4.0.10) - framework: dnxcore50
@@ -68,7 +67,7 @@ NUGET
     Microsoft.Data.Services.Client (5.6.4) - framework: >= net40
       Microsoft.Data.OData (5.6.4)
     Microsoft.IdentityModel (6.1.7600.16394) - framework: net40
-    Microsoft.Net.Http (2.2.29) - framework: portable-wp80+win+net45+wp81+wpa81
+    Microsoft.Net.Http (2.2.29)
       Microsoft.Bcl (>= 1.1.10)
       Microsoft.Bcl.Build (>= 1.0.14)
     Microsoft.Rest.ClientRuntime (1.4.1)
@@ -78,17 +77,17 @@ NUGET
       System.Net.Http (>= 4.0.0) - framework: dnxcore50
       System.Threading.Tasks (>= 4.0.10) - framework: dnxcore50
       System.Xml.ReaderWriter (>= 4.0.10) - framework: dnxcore50
-    Microsoft.Web.Infrastructure (1.0.0) - framework: >= net40
+    Microsoft.Web.Infrastructure (1.0.0.0) - framework: >= net40
     Microsoft.Win32.Primitives (4.0.0) - framework: dnxcore50
       System.Runtime (>= 4.0.20) - framework: dnxcore50
       System.Runtime.InteropServices (>= 4.0.20) - framework: dnxcore50
     Microsoft.WindowsAzure.ConfigurationManager (3.1.0)
     Moq (4.2.1510.2205)
-    Newtonsoft.Json (7.0.1) - framework: >= net40
+    Newtonsoft.Json (7.0.1) - framework: dnxcore50, winv4.5, wpv8.1, wpv8.0, portable-net45+win80+wpa81, >= net45, >= net46, >= net40
     RestSharp (105.2.3) - framework: >= net40
-    Selenium.Support (2.48.0)
-      Selenium.WebDriver (>= 2.48.0)
-    Selenium.WebDriver (2.48.0)
+    Selenium.Support (2.48.1)
+      Selenium.WebDriver (>= 2.48.1)
+    Selenium.WebDriver (2.48.1)
     Swashbuckle (5.2.2) - framework: >= net46
       Microsoft.AspNet.WebApi.WebHost (>= 4.0.20710)
       Swashbuckle.Core (>= 5.2.2)
@@ -388,7 +387,7 @@ NUGET
       System.Text.Encoding.Extensions (>= 4.0.10) - framework: dnxcore50
       System.Text.RegularExpressions (>= 4.0.10) - framework: dnxcore50
       System.Threading.Tasks (>= 4.0.10) - framework: dnxcore50
-    WebActivatorEx (2.0.6) - framework: >= net40
+    WebActivatorEx (2.0.6) - framework: >= net46, >= net40
       Microsoft.Web.Infrastructure (>= 1.0.0.0)
     WebApi.JsonWebToken (0.2.0)
       JWT (>= 1.3.2)
@@ -398,7 +397,7 @@ NUGET
       Newtonsoft.Json (>= 6.0.4)
     WindowsAzure.ServiceBus (3.0.7)
       Microsoft.WindowsAzure.ConfigurationManager
-    WindowsAzure.Storage (6.0.0)
+    WindowsAzure.Storage (6.1.0)
       Microsoft.Azure.KeyVault.Core (>= 1.0.0) - framework: wpv8.0, >= net40
       Microsoft.Data.OData (>= 5.6.4) - framework: winv4.5, wpv8.1, wpv8.0, >= net40
       Microsoft.Data.Services.Client (>= 5.6.4) - framework: >= net40
